@@ -1,0 +1,31 @@
+{
+  "system": "SVE",
+  "title": "Soil vapor extraction, in situ",
+  "functional_unit": {"description": "Remediation of 1,000 m3 of TPH-contaminated soil (200 m2 x 5 m) from 10,000 to 500 mg TPH/kg", "amount": 1000, "unit": "m3 soil"},
+  "duration_years": 2.05,
+  "source": {"citation": "Jeong & Suh (2011) J. Korean Soc. Environ. Eng. 33(4):267-274, Table 2", "doi": "10.4491/KSEE.2011.33.4.267"},
+  "stages": [
+    {"id": "transport", "name": "Transportation", "note": "All materials 99.8 t, 30 km round trip",
+     "inputs": [{"item": "transport_lorry", "amount": 2994, "unit": "tkm"}]},
+    {"id": "foundation", "name": "Site foundation", "note": "Office, storage and SVE system foundation",
+     "inputs": [{"item": "gravel", "amount": 9.6, "unit": "m3"},
+                {"item": "concrete", "amount": 19, "unit": "m3"},
+                {"item": "wire_mesh", "amount": 96, "unit": "m2"},
+                {"item": "diesel_machinery", "amount": 21, "unit": "L", "note": "backhoe"}]},
+    {"id": "wells", "name": "Well installation", "note": "1 extraction well + 2 monitoring wells",
+     "inputs": [{"item": "pvc", "amount": 45, "unit": "kg"},
+                {"item": "sand", "amount": 0.3, "unit": "m3"},
+                {"item": "bentonite", "amount": 211, "unit": "kg"},
+                {"item": "mortar", "amount": 2291, "unit": "kg"},
+                {"item": "diesel_machinery", "amount": 11, "unit": "L", "note": "drilling rig"}]},
+    {"id": "assembly", "name": "SVE system assembly",
+     "inputs": [{"item": "polyurethane_hose", "amount": 340, "unit": "m"},
+                {"item": "sand", "amount": 4, "unit": "m3"},
+                {"item": "concrete", "amount": 5, "unit": "m3"},
+                {"item": "welding_gas", "amount": 100, "unit": "m"}]},
+    {"id": "operation", "name": "SVE operation", "note": "2.05 years; estimated from three systems' electricity data",
+     "inputs": [{"item": "electricity", "amount": 148748, "unit": "kWh"}]},
+    {"id": "gac", "name": "GAC replacement", "note": "Freundlich isotherm for benzene, 0.152 g/g",
+     "inputs": [{"item": "activated_carbon", "amount": 18000, "unit": "kg"}]}
+  ]
+}

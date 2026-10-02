@@ -1,0 +1,21 @@
+# instructor-only material (paper PDF, scans, raw dumps) – never committed
+local/
+
+# raw snapshot JSON is large; the gzipped copies are committed instead
+data/snapshot/*.json
+!data/snapshot/meta.json
+data/snapshot_build.log
+
+# python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# node
+node_modules/
+
+# os / editors
+.DS_Store
+.vscode/
+.idea/

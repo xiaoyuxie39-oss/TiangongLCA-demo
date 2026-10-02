@@ -1,0 +1,33 @@
+{
+  "system": "Biopile",
+  "title": "Biopile, ex situ on site",
+  "functional_unit": {"description": "Remediation of 1,000 m3 of TPH-contaminated soil (200 m2 x 5 m) from 10,000 to 500 mg TPH/kg", "amount": 1000, "unit": "m3 soil"},
+  "duration_years": 1.41,
+  "source": {"citation": "Jeong & Suh (2011) J. Korean Soc. Environ. Eng. 33(4):267-274, Table 3", "doi": "10.4491/KSEE.2011.33.4.267"},
+  "stages": [
+    {"id": "transport", "name": "Transportation", "note": "All materials 117 t, 30 km round trip",
+     "inputs": [{"item": "transport_lorry", "amount": 3510, "unit": "tkm"}]},
+    {"id": "excavation", "name": "Excavation",
+     "inputs": [{"item": "diesel_machinery", "amount": 288, "unit": "L", "note": "excavator 0.7 m3, 27.4 h"},
+                {"item": "diesel_machinery", "amount": 515, "unit": "L", "note": "dump truck 10.5 t, 27.4 h"}]},
+    {"id": "preparation", "name": "Site preparation",
+     "inputs": [{"item": "diesel_machinery", "amount": 16, "unit": "L", "note": "tyre roller 15 t, 2 h"},
+                {"item": "gravel", "amount": 7.8, "unit": "m3"},
+                {"item": "sand", "amount": 60, "unit": "m3"},
+                {"item": "thp_tube", "amount": 58, "unit": "m"},
+                {"item": "hdpe_sheet", "amount": 600, "unit": "m2", "note": "t = 2 mm"},
+                {"item": "pp_textile", "amount": 600, "unit": "m2"},
+                {"item": "welding_gas", "amount": 100, "unit": "m"}]},
+    {"id": "operation", "name": "Biopile operation", "note": "1.41 years; electricity estimated from an 875 m3 system",
+     "inputs": [{"item": "water", "amount": 67.4, "unit": "t"},
+                {"item": "ammonium_sulphate", "amount": 2708, "unit": "kg"},
+                {"item": "potassium_sulphate", "amount": 558, "unit": "kg"},
+                {"item": "microorganism", "amount": 4777, "unit": "L"},
+                {"item": "electricity", "amount": 63700, "unit": "kWh"}]},
+    {"id": "gac", "name": "GAC replacement",
+     "inputs": [{"item": "activated_carbon", "amount": 1368, "unit": "kg"}]},
+    {"id": "backfill", "name": "Backfilling",
+     "inputs": [{"item": "diesel_machinery", "amount": 288, "unit": "L", "note": "excavator"},
+                {"item": "diesel_machinery", "amount": 515, "unit": "L", "note": "dump truck"}]}
+  ]
+}

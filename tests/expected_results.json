@@ -1,0 +1,9 @@
+{
+  "generated_by": null,
+  "snapshot": null,
+  "bundle_sha256": null,
+  "tolerance_rel": 0.01,
+  "systems": {"SVE": null, "Biopile": null},
+  "identities": ["sum_process_equals_total", "sum_stage_equals_total"],
+  "_status": "PLACEHOLDER — produced in M2 by reference/run_case.py --write-expected. Tests must fail while this is null."
+}

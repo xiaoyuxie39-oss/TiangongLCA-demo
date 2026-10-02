@@ -1,0 +1,39 @@
+{
+  "_comment": "One entry per foreground item. Fill during M1 with reference/build_case_bundle.py --check. Conversion factors must cite a source.",
+  "electricity": {
+    "flow": "890a70b7-b677-4e2a-8a1b-7d017e0a10ae", "flow_name": "Electricity", "flow_unit": "MJ",
+    "convert": {"from": "kWh", "factor": 3.6, "note": "1 kWh = 3.6 MJ"},
+    "default_provider": "0aa8c769-a04a-4e76-897a-2b1051cb9344",
+    "default_provider_name": "Electricity production ; Electricity mix ; China (2019)",
+    "alternatives_hint": "Any 'Electricity production ; Electricity mix ; <province>' process; all 31 output the same flow.",
+    "why": "TianGong has no Korean grid. National average as neutral default; provinces for the sensitivity exercise."
+  },
+  "activated_carbon": {
+    "flow": "5cad53b5-252a-4e2f-8197-8be465707405", "flow_name": "activated carbon", "flow_unit": "kg",
+    "convert": {"from": "kg", "factor": 1},
+    "default_provider": null, "todo": true,
+    "candidates": ["a83ed2c4-a6ec-4ff3-a19e-8e6c3d8cdecf", "4b8ba0f1-9ad4-4f62-8686-6c40cbdcc740", "c090f0c3-1e65-4516-bc82-e34b4d25c02c"],
+    "why": "Coal-based AC in TianGong is split into several unit operations that all output the same flow; the fruit-shell and wood-chip NESPS2 datasets are single gate-to-gate processes. Decide in M1 after inspecting exchanges."
+  },
+  "transport_lorry": {"flow": null, "flow_unit": "tkm", "convert": {"from": "tkm", "factor": 1}, "default_provider": null, "todo": true,
+    "search": ["transport in t*km", "Road Transport", "truck"], "why": "Pick a Chinese road freight dataset with a t*km reference flow."},
+  "diesel_machinery": {"flow": null, "convert": {"from": "L", "factor": 0.84, "note": "diesel density 0.84 kg/L; if the flow is in MJ use 35.9 MJ/L instead"}, "default_provider": null, "todo": true,
+    "search": ["Diesel", "diesel combustion", "construction machinery"], "why": "Prefer a 'diesel burned in machinery' process (fuel production + combustion); else diesel production + a manual CO2 emission of 2.68 kg/L as a documented approximation."},
+  "gravel": {"flow": null, "convert": {"from": "m3", "factor": 1600, "note": "bulk density 1.6 t/m3"}, "default_provider": null, "todo": true, "search": ["gravel", "crushed stone", "aggregate"]},
+  "sand": {"flow": null, "convert": {"from": "m3", "factor": 1600, "note": "bulk density 1.6 t/m3"}, "default_provider": null, "todo": true, "search": ["sand"]},
+  "concrete": {"flow": null, "convert": {"from": "m3", "factor": 2400, "note": "2.4 t/m3"}, "default_provider": null, "todo": true, "search": ["concrete", "ready-mixed concrete", "cement"]},
+  "mortar": {"flow": null, "convert": {"from": "kg", "factor": 1}, "default_provider": null, "todo": true, "search": ["mortar", "cement"], "why": "If no mortar dataset, approximate with cement + sand (document the recipe)."},
+  "wire_mesh": {"flow": null, "convert": {"from": "m2", "factor": 1.5, "note": "ASSUMPTION ~1.5 kg steel per m2 welded mesh; verify"}, "default_provider": null, "todo": true, "search": ["steel wire", "steel", "wire rod"]},
+  "pvc": {"flow": null, "convert": {"from": "kg", "factor": 1}, "default_provider": null, "todo": true, "search": ["polyvinyl chloride", "PVC"]},
+  "bentonite": {"flow": null, "convert": {"from": "kg", "factor": 1}, "default_provider": null, "todo": true, "search": ["bentonite"]},
+  "polyurethane_hose": {"flow": null, "convert": {"from": "m", "factor": 0.5, "note": "ASSUMPTION ~0.5 kg/m flexible PU hose; verify"}, "default_provider": null, "todo": true, "search": ["polyurethane"]},
+  "welding_gas": {"flow": null, "convert": {"from": "m", "factor": 1}, "default_provider": null, "todo": true, "search": ["welding", "acetylene", "oxygen"], "why": "Paper used ecoinvent 'welding, gas' per metre."},
+  "thp_tube": {"flow": null, "convert": {"from": "m", "factor": 0.3, "note": "ASSUMPTION ~0.3 kg/m HDPE perforated pipe; verify"}, "default_provider": null, "todo": true, "search": ["polyethylene", "HDPE pipe"]},
+  "hdpe_sheet": {"flow": null, "convert": {"from": "m2", "factor": 1.9, "note": "2 mm HDPE at 0.95 g/cm3 = 1.9 kg/m2"}, "default_provider": null, "todo": true, "search": ["polyethylene", "HDPE"]},
+  "pp_textile": {"flow": null, "convert": {"from": "m2", "factor": 0.3, "note": "ASSUMPTION 300 g/m2 geotextile; verify"}, "default_provider": null, "todo": true, "search": ["polypropylene"]},
+  "water": {"flow": null, "convert": {"from": "t", "factor": 1000}, "default_provider": null, "todo": true, "search": ["Tap water"]},
+  "ammonium_sulphate": {"flow": null, "convert": {"from": "kg", "factor": 1}, "default_provider": null, "todo": true, "search": ["ammonium sulfate", "ammonium sulphate"]},
+  "potassium_sulphate": {"flow": null, "convert": {"from": "kg", "factor": 1}, "default_provider": null, "todo": true, "search": ["potassium sulfate", "potassium sulphate"]},
+  "microorganism": {"flow": null, "convert": {"from": "L", "factor": 1}, "default_provider": null, "cutoff": true,
+    "why": "No LCI for microbial inoculum in TianGong (nor in ecoinvent 2.1); the paper also lacks it. Declared cut-off, shown in the cut-off list."}
+}
