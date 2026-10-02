@@ -77,7 +77,9 @@ per_printed_unit, …}` (an extra product input). Amount = `per_printed_unit × 
 - **Duplicate rows:** exact duplicate exchange rows (same flow, direction, amount) are collapsed to one — TianGong has
   re-import duplicates, including doubled reference outputs; rows with the same flow but different amounts (NESPS2
   end-of-pipe technology variants) are summed and the process is listed in `warnings`.
-- A provider that consumes part of its own reference output (CEEIO input-output sectors, ~5 %) is netted on the diagonal.
+- A product input whose flow is the consumer's own reference flow (CEEIO input-output sectors consume ~5 % of their own
+  output) is **netted on the diagonal** (A[u,u] −= amount, logged as rule `self-netted`); it is never resolved to another
+  provider and never a cut-off.
 - Elementary rows with no factor in any method are "linked but uncharacterised"; report them (e.g. `particles (PM2.5 - PM10)`).
 
 ## Known data facts (details in `docs/05_provider_mapping_decisions.md`)

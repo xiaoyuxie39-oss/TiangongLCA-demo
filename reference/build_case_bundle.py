@@ -192,6 +192,9 @@ def build(s, choices, systems):
         for e in p["exchanges"]:
             if e["dir"] != "in" or not (s.flow_type(e["flow"]) or "").startswith("Product"):
                 continue
+            if e["flow"] == p.get("ref_flow"):
+                log.append({"flow": e["flow"], "consumer": u, "provider": u, "rule": "self-netted"})
+                continue   # own-product consumption is netted on the diagonal, never resolved to another provider
             prov = resolve(s, e["flow"], p.get("geo"), overrides, log, consumer_uuid=u)
             if prov is None:
                 cutoffs.append({"system": "background", "consumer": u, "flow": e["flow"], "name": e.get("name"), "amount": e["amount"], "unit": s.flow_unit(e["flow"])})

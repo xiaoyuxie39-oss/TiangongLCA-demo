@@ -180,6 +180,9 @@ class LcaSystem:
                     self._a(u, u, amt)
                 elif ft.startswith("Elementary"):
                     self._b(flow, d, u, amt)
+                elif d == "in" and ft.startswith("Product") and flow == p.get("ref_flow"):
+                    self._a(u, u, -amt)   # own-product consumption (IO sectors): netted on the diagonal
+                    self.provider_log.append({"flow": flow, "consumer": u, "provider": u, "rule": "self-netted"})
                 elif d == "in" and ft.startswith("Product"):
                     prov = resolve_provider(self.bundle, flow, p.get("geo"), u, self.overrides, self.provider_log)
                     if prov is None:

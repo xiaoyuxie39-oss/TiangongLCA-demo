@@ -1,26 +1,26 @@
 method,value,unit
-Acidification,312.6216742259062,mol H+ equivalents
-Climate change,45878.315229669584,kg CO2 Equivalents
+Acidification,312.8125163094182,mol H+ equivalents
+Climate change,45936.58883630601,kg CO2 Equivalents
 Climate change-Biogenic,0.0,kg CO2-Equivalents
-Climate change-Fossil,45878.315229669584,kg CO2 Equivalents
+Climate change-Fossil,45936.58883630601,kg CO2 Equivalents
 Climate change-Land use and land use change,0.0,kg CO2-Equivalents
-"Ecotoxicity, freshwater",169.3963223076476,CTUe
-"Ecotoxicity, freshwater_inorganics",51.329250889023456,CTUe
-"Ecotoxicity, freshwater_organics",118.06707141862414,CTUe
-EF-particulate Matter,0.000773548092208243,disease incidence
-Eutrophication marine,155.6514571357422,kg N equivalents
+"Ecotoxicity, freshwater",171.08372600262481,CTUe
+"Ecotoxicity, freshwater_inorganics",52.91245025106195,CTUe
+"Ecotoxicity, freshwater_organics",118.17127575156285,CTUe
+EF-particulate Matter,0.0007962247515950673,disease incidence
+Eutrophication marine,155.74825734200803,kg N equivalents
 "Eutrophication, freshwater",0.0015165000000000007,kg P equivalents
-"Eutrophication, terrestrial",1704.665890278231,mol N equivalents
-"Human toxicity, cancer",4.864398715086962e-07, CTUh 
-"Human toxicity, cancer_inorganics",1.26544473008256e-08, CTUh 
-"Human toxicity, cancer_organics",4.737854242078706e-07, CTUh 
-"Human toxicity, non-cancer",2.8079989645989447e-06,CTUh
-"Human toxicity, non-cancer_inorganics",1.123341092665021e-06,CTUh
-"Human toxicity, non-cancer_organics",1.6846578719339236e-06,CTUh
+"Eutrophication, terrestrial",1705.755175788207,mol N equivalents
+"Human toxicity, cancer",4.941581847328962e-07, CTUh 
+"Human toxicity, cancer_inorganics",2.0372739616542454e-08, CTUh 
+"Human toxicity, cancer_organics",4.737854451163538e-07, CTUh 
+"Human toxicity, non-cancer",3.58867564608944e-06,CTUh
+"Human toxicity, non-cancer_inorganics",1.8949748068047924e-06,CTUh
+"Human toxicity, non-cancer_organics",1.6937008392846473e-06,CTUh
 "Ionising radiation, human health",0.0,kBq U235 equivalents
 Land use,0.0,dimensionless (pt)
 Ozone depletion,0.0,kg CFC11 equivalents
-Photochemical ozone formation - human health,501.5146604173076,kg NMVOC equivalents
-"Resource use, fossils",162.15871831318,MJ
+Photochemical ozone formation - human health,501.7807860486084,kg NMVOC equivalents
+"Resource use, fossils",162.1588522522763,MJ
 "Resource use, minerals and metals",0.0,kg Sb equivalents
-Water use,10177.228612910312,m3-world equivalents
+Water use,10279.164888501715,m3-world equivalents
