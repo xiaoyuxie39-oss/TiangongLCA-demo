@@ -94,7 +94,8 @@ per_printed_unit, …}` (an extra product input). Amount = `per_printed_unit × 
 ## Acceptance
 
 - `python3 reference/run_case.py` and `node web/test.mjs` both pass against `tests/expected_results.json`.
-- The web tool opens from `file://` and from GitHub Pages with no build step and no network access except an optional Chart.js CDN.
+- The web tool opens from `file://` and from GitHub Pages with no build step and no network access except an optional Chart.js CDN,
+  and renders without a console error — including the cut-off rows of the foreground (they carry no `flow`/`amount`/`provider`).
 - Every number shown in the UI can be traced to a process uuid and a flow uuid.
 
 ## Rules

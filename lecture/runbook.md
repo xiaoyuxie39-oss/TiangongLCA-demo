@@ -34,6 +34,7 @@
 |---|---|---|
 | 2026-10-02 | Fresh clone, `codex exec` (Codex CLI 0.160, model gpt-5.6-sol, medium reasoning), prompt `prompts/00_build_tool.md` verbatim, no human input | **11 min 55 s** to a passing tool: `web/lca_core.js`, `web/test.mjs`, `web/index.html` (embeds a compressed copy of the bundle for `file://`); 505 checks PASS; it also flagged a genuine inconsistency between `AGENTS.md` and the reference (own-product consumption), fixed afterwards |
 | 2026-10-02 | Follow-up: `codex exec resume --last` with a two-sentence change request after the reference fix (own-product netting) | **1 min 59 s**; it changed `lca_core.js`, extended `test.mjs`, refreshed the embedded bundle; 507 checks PASS |
+| 2026-10-02 | Bug report from opening the page in a browser: cut-off rows (diesel, inoculum) crashed the foreground table — the test cannot see UI bugs | **3 min 7 s** to fix; lesson added to the prompt: name the cut-off rows explicitly and ask for a render check. Always open the page once before declaring victory |
 
 Budget for the live slot: 30 min = 12 min build + 5 min test/open + buffer. If the build passes early, use the time to change a provider live.
 
