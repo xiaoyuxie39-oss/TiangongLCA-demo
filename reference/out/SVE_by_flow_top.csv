@@ -1,0 +1,155 @@
+method,elementary flow,contribution,unit,inventory g
+Acidification,sulfur dioxide [out],89.12196714616894,mol H+ equivalents,68.03203598944194
+Acidification,Nitrogen oxides [out],69.72301173136925,mol H+ equivalents,94.22028612347196
+Acidification,Nitrogen oxides [out],40.27031899999999,mol H+ equivalents,54.419349999999994
+Acidification,ammonia [out],0.02116065783112589,mol H+ equivalents,0.007006840341432414
+Acidification,nitrogen monoxide [out],0.008806702216385173,mol H+ equivalents,0.00776146563880703
+Climate change,carbon dioxide (fossil) [out],92546.02606911727,kg CO2 Equivalents,92546.02606911727
+Climate change,nitrous oxide [out],215.50578792452382,kg CO2 Equivalents,0.7893984905660213
+Climate change,carbon dioxide (fossil) [out],28.76972510130506,kg CO2 Equivalents,28.76972510130506
+Climate change,methane (fossil) [out],6.8008814777368825,kg CO2 Equivalents,0.2282174992529155
+Climate change,nitrous oxide [out],2.223558871252264,kg CO2 Equivalents,0.008144904290301333
+Climate change,ethane [out],1.18864,kg CO2 Equivalents,2.7199999999999998
+Climate change,carbon dioxide (fossil) [out],0.004717269140945231,kg CO2 Equivalents,0.004717269140945231
+Climate change,methane (fossil) [out],0.00027603591344017603,kg CO2 Equivalents,9.262950115442148e-06
+Climate change-Fossil,carbon dioxide (fossil) [out],92546.02606911727,kg CO2 Equivalents,92546.02606911727
+Climate change-Fossil,nitrous oxide [out],215.50578792452382,kg CO2 Equivalents,0.7893984905660213
+Climate change-Fossil,carbon dioxide (fossil) [out],28.76972510130506,kg CO2 Equivalents,28.76972510130506
+Climate change-Fossil,methane (fossil) [out],6.8008814777368825,kg CO2 Equivalents,0.2282174992529155
+Climate change-Fossil,nitrous oxide [out],2.223558871252264,kg CO2 Equivalents,0.008144904290301333
+Climate change-Fossil,ethane [out],1.18864,kg CO2 Equivalents,2.7199999999999998
+Climate change-Fossil,carbon dioxide (fossil) [out],0.004717269140945231,kg CO2 Equivalents,0.004717269140945231
+Climate change-Fossil,methane (fossil) [out],0.00027603591344017603,kg CO2 Equivalents,9.262950115442148e-06
+"Ecotoxicity, freshwater",carbon monoxide (fossil) [out],6.832830399999998,CTUe,299.19999999999993
+"Ecotoxicity, freshwater",cadmium [out],0.965507174130729,CTUe,4.053734267845878e-06
+"Ecotoxicity, freshwater",ammonia [out],0.941859478695345,CTUe,0.007006840341432414
+"Ecotoxicity, freshwater",nickel [out],0.4652711149510201,CTUe,4.810748646726237e-05
+"Ecotoxicity, freshwater",volatile organic compound [out],0.39968374734959583,CTUe,0.20846176777217745
+"Ecotoxicity, freshwater",hydrocarbons (unspecified) [out],0.19231640999999997,CTUe,56.099999999999994
+"Ecotoxicity, freshwater",chromium [out],0.1164587727498732,CTUe,2.7159158118241934e-05
+"Ecotoxicity, freshwater",mercury [out],0.09950260023906096,CTUe,6.229543517345948e-06
+"Ecotoxicity, freshwater",methane (fossil) [out],0.0729702632111272,CTUe,0.2282174992529155
+"Ecotoxicity, freshwater",zinc [out],0.07110018241655061,CTUe,0.00011312730366902591
+"Ecotoxicity, freshwater",benzene [out],0.06641737528882387,CTUe,0.080884350158102
+"Ecotoxicity, freshwater",ethane [out],0.039284959999999994,CTUe,2.7199999999999998
+"Ecotoxicity, freshwater",ammonia [out],0.0174012894,CTUe,6.9795e-06
+"Ecotoxicity, freshwater",arsenic [out],0.01675922943686035,CTUe,1.4007145865867612e-05
+"Ecotoxicity, freshwater","Oils, unspecified [out]",0.015752712465,CTUe,1.96695e-05
+"Ecotoxicity, freshwater_inorganics",carbon monoxide (fossil) [out],6.832830399999998,CTUe,299.19999999999993
+"Ecotoxicity, freshwater_inorganics",cadmium [out],0.965507174130729,CTUe,4.053734267845878e-06
+"Ecotoxicity, freshwater_inorganics",ammonia [out],0.941859478695345,CTUe,0.007006840341432414
+"Ecotoxicity, freshwater_inorganics",nickel [out],0.4652711149510201,CTUe,4.810748646726237e-05
+"Ecotoxicity, freshwater_inorganics",chromium [out],0.1164587727498732,CTUe,2.7159158118241934e-05
+"Ecotoxicity, freshwater_inorganics",mercury [out],0.09950260023906096,CTUe,6.229543517345948e-06
+"Ecotoxicity, freshwater_inorganics",zinc [out],0.07110018241655061,CTUe,0.00011312730366902591
+"Ecotoxicity, freshwater_inorganics",ammonia [out],0.0174012894,CTUe,6.9795e-06
+"Ecotoxicity, freshwater_inorganics",arsenic [out],0.01675922943686035,CTUe,1.4007145865867612e-05
+"Ecotoxicity, freshwater_inorganics",cobalt [out],0.013548199098217962,CTUe,6.725315060317339e-06
+"Ecotoxicity, freshwater_inorganics",antimony [out],0.008883587343759328,CTUe,2.2569169103842257e-06
+"Ecotoxicity, freshwater_inorganics",carbon monoxide (fossil) [out],0.008382432852708902,CTUe,0.36711920696837486
+"Ecotoxicity, freshwater_inorganics",lead [out],0.0014666743693175274,CTUe,5.274646076810805e-05
+"Ecotoxicity, freshwater_inorganics",manganese [out],0.0011290631453812975,CTUe,5.6613995210320697e-05
+"Ecotoxicity, freshwater_inorganics",copper [out],0.0006447387680615692,CTUe,3.783949770513226e-05
+"Ecotoxicity, freshwater_organics",volatile organic compound [out],0.39968374734959583,CTUe,0.20846176777217745
+"Ecotoxicity, freshwater_organics",hydrocarbons (unspecified) [out],0.19231640999999997,CTUe,56.099999999999994
+"Ecotoxicity, freshwater_organics",methane (fossil) [out],0.0729702632111272,CTUe,0.2282174992529155
+"Ecotoxicity, freshwater_organics",benzene [out],0.06641737528882387,CTUe,0.080884350158102
+"Ecotoxicity, freshwater_organics",ethane [out],0.039284959999999994,CTUe,2.7199999999999998
+"Ecotoxicity, freshwater_organics","Oils, unspecified [out]",0.015752712465,CTUe,1.96695e-05
+"Ecotoxicity, freshwater_organics",benzo[a]pyrene [out],0.0010884599404204875,CTUe,1.6154770031620399e-06
+"Ecotoxicity, freshwater_organics",phenol [out],0.00013847519999999998,CTUe,3.4e-07
+"Ecotoxicity, freshwater_organics",ethylene [out],1.7364819609e-06,CTUe,0.001833705
+"Ecotoxicity, freshwater_organics",toluene [out],4.1672609999999993e-07,CTUe,1.5299999999999998e-06
+EF-particulate Matter,particles (PM2.5) [out],0.0007611026857967585,disease incidence,3.1912463712195898
+EF-particulate Matter,sulfur dioxide [out],0.0005442562879155355,disease incidence,68.03203598944194
+EF-particulate Matter,Nitrogen oxides [out],0.00015075245779755514,disease incidence,94.22028612347196
+EF-particulate Matter,Nitrogen oxides [out],8.707095999999999e-05,disease incidence,54.419349999999994
+EF-particulate Matter,particles (PM10) [out],7.1197498895274515e-06,disease incidence,0.12979359704102955
+EF-particulate Matter,ammonia [out],1.471436471700807e-07,disease incidence,0.007006840341432414
+EF-particulate Matter,nitrogen monoxide [out],1.2418345022091248e-08,disease incidence,0.00776146563880703
+Eutrophication marine,Nitrogen oxides [out],36.65169130203059,kg N equivalents,94.22028612347196
+Eutrophication marine,Nitrogen oxides [out],21.169127149999998,kg N equivalents,54.419349999999994
+Eutrophication marine,nitrogen monoxide [out],0.00462583352072899,kg N equivalents,0.00776146563880703
+Eutrophication marine,ammonia [out],0.0006446293114117821,kg N equivalents,0.007006840341432414
+Eutrophication marine,ammonia [out],5.751107999999999e-06,kg N equivalents,6.9795e-06
+"Eutrophication, terrestrial",Nitrogen oxides [out],401.3784188859905,mol N equivalents,94.22028612347196
+"Eutrophication, terrestrial",Nitrogen oxides [out],231.82643099999996,mol N equivalents,54.419349999999994
+"Eutrophication, terrestrial",ammonia [out],0.09438213939909462,mol N equivalents,0.007006840341432414
+"Eutrophication, terrestrial",nitrogen monoxide [out],0.05069789355268752,mol N equivalents,0.00776146563880703
+"Human toxicity, cancer",benzo[a]pyrene [out],7.295332598579456e-09, CTUh ,1.6154770031620399e-06
+"Human toxicity, cancer",benzene [out],6.735158953314996e-09, CTUh ,0.080884350158102
+"Human toxicity, cancer",mercury [out],6.716070866050667e-09, CTUh ,6.229543517345948e-06
+"Human toxicity, cancer",chromium [out],2.1205327475560936e-09, CTUh ,2.7159158118241934e-05
+"Human toxicity, cancer",nickel [out],9.504596101337027e-10, CTUh ,4.810748646726237e-05
+"Human toxicity, cancer",arsenic [out],6.160482823267235e-10, CTUh ,1.4007145865867612e-05
+"Human toxicity, cancer",lead [out],2.6224485364687963e-10, CTUh ,5.274646076810805e-05
+"Human toxicity, cancer",cadmium [out],1.2877903022092786e-10, CTUh ,4.053734267845878e-06
+"Human toxicity, cancer",toluene [out],9.922508999999998e-18, CTUh ,1.5299999999999998e-06
+"Human toxicity, cancer_inorganics",mercury [out],6.716070866050667e-09, CTUh ,6.229543517345948e-06
+"Human toxicity, cancer_inorganics",chromium [out],2.1205327475560936e-09, CTUh ,2.7159158118241934e-05
+"Human toxicity, cancer_inorganics",nickel [out],9.504596101337027e-10, CTUh ,4.810748646726237e-05
+"Human toxicity, cancer_inorganics",arsenic [out],6.160482823267235e-10, CTUh ,1.4007145865867612e-05
+"Human toxicity, cancer_inorganics",lead [out],2.6224485364687963e-10, CTUh ,5.274646076810805e-05
+"Human toxicity, cancer_inorganics",cadmium [out],1.2877903022092786e-10, CTUh ,4.053734267845878e-06
+"Human toxicity, cancer_organics",benzo[a]pyrene [out],7.295332598579456e-09, CTUh ,1.6154770031620399e-06
+"Human toxicity, cancer_organics",benzene [out],6.735158953314996e-09, CTUh ,0.080884350158102
+"Human toxicity, cancer_organics",toluene [out],9.922508999999998e-18, CTUh ,1.5299999999999998e-06
+"Human toxicity, non-cancer",mercury [out],7.948274573781696e-07,CTUh,6.229543517345948e-06
+"Human toxicity, non-cancer",hydrocarbons (unspecified) [out],1.2394733999999998e-07,CTUh,56.099999999999994
+"Human toxicity, non-cancer",lead [out],9.199510222565725e-08,CTUh,5.274646076810805e-05
+"Human toxicity, non-cancer",arsenic [out],3.485538177262496e-08,CTUh,1.4007145865867612e-05
+"Human toxicity, non-cancer",cadmium [out],2.952780578041616e-08,CTUh,4.053734267845878e-06
+"Human toxicity, non-cancer",nitrous oxide [out],1.2630375849056342e-08,CTUh,0.7893984905660213
+"Human toxicity, non-cancer",methane (fossil) [out],1.1079503153730542e-08,CTUh,0.2282174992529155
+"Human toxicity, non-cancer",volatile organic compound [out],1.0649060944873914e-08,CTUh,0.20846176777217745
+"Human toxicity, non-cancer",ethane [out],7.2482559999999995e-09,CTUh,2.7199999999999998
+"Human toxicity, non-cancer",zinc [out],6.591362348275795e-09,CTUh,0.00011312730366902591
+"Human toxicity, non-cancer",benzene [out],4.023025808163677e-09,CTUh,0.080884350158102
+"Human toxicity, non-cancer",nitrous oxide [out],1.306849893378849e-10,CTUh,0.008144904290301333
+"Human toxicity, non-cancer",chromium [out],1.1234114164029593e-10,CTUh,2.7159158118241934e-05
+"Human toxicity, non-cancer",antimony [out],9.952777883103397e-11,CTUh,2.2569169103842257e-06
+"Human toxicity, non-cancer",ammonia [out],9.292471660807667e-11,CTUh,0.007006840341432414
+"Human toxicity, non-cancer_inorganics",mercury [out],7.948274573781696e-07,CTUh,6.229543517345948e-06
+"Human toxicity, non-cancer_inorganics",lead [out],9.199510222565725e-08,CTUh,5.274646076810805e-05
+"Human toxicity, non-cancer_inorganics",arsenic [out],3.485538177262496e-08,CTUh,1.4007145865867612e-05
+"Human toxicity, non-cancer_inorganics",cadmium [out],2.952780578041616e-08,CTUh,4.053734267845878e-06
+"Human toxicity, non-cancer_inorganics",zinc [out],6.591362348275795e-09,CTUh,0.00011312730366902591
+"Human toxicity, non-cancer_inorganics",chromium [out],1.1234114164029593e-10,CTUh,2.7159158118241934e-05
+"Human toxicity, non-cancer_inorganics",antimony [out],9.952777883103397e-11,CTUh,2.2569169103842257e-06
+"Human toxicity, non-cancer_inorganics",ammonia [out],9.292471660807667e-11,CTUh,0.007006840341432414
+"Human toxicity, non-cancer_inorganics",nickel [out],5.348590345430231e-11,CTUh,4.810748646726237e-05
+"Human toxicity, non-cancer_inorganics",cobalt [out],2.4050399187200835e-11,CTUh,6.725315060317339e-06
+"Human toxicity, non-cancer_inorganics",copper [out],1.33316118314722e-11,CTUh,3.783949770513226e-05
+"Human toxicity, non-cancer_inorganics",selenium [out],7.579780645996686e-12,CTUh,1.01772075592748e-05
+"Human toxicity, non-cancer_inorganics",ammonia [out],1.37244888e-14,CTUh,6.9795e-06
+"Human toxicity, non-cancer_organics",hydrocarbons (unspecified) [out],1.2394733999999998e-07,CTUh,56.099999999999994
+"Human toxicity, non-cancer_organics",nitrous oxide [out],1.2630375849056342e-08,CTUh,0.7893984905660213
+"Human toxicity, non-cancer_organics",methane (fossil) [out],1.1079503153730542e-08,CTUh,0.2282174992529155
+"Human toxicity, non-cancer_organics",volatile organic compound [out],1.0649060944873914e-08,CTUh,0.20846176777217745
+"Human toxicity, non-cancer_organics",ethane [out],7.2482559999999995e-09,CTUh,2.7199999999999998
+"Human toxicity, non-cancer_organics",benzene [out],4.023025808163677e-09,CTUh,0.080884350158102
+"Human toxicity, non-cancer_organics",nitrous oxide [out],1.306849893378849e-10,CTUh,0.008144904290301333
+"Human toxicity, non-cancer_organics",ethylene [out],1.2038640066e-12,CTUh,0.001833705
+"Human toxicity, non-cancer_organics","Oils, unspecified [out]",3.85600878e-13,CTUh,1.96695e-05
+"Human toxicity, non-cancer_organics",phenol [out],7.25526e-14,CTUh,3.4e-07
+"Human toxicity, non-cancer_organics",toluene [out],3.2125409999999998e-15,CTUh,1.5299999999999998e-06
+Land use,unspecified [in],0.2493432,dimensionless (pt),0.0036
+Photochemical ozone formation - human health,Nitrogen oxides [out],94.22028612347196,kg NMVOC equivalents,94.22028612347196
+Photochemical ozone formation - human health,Nitrogen oxides [out],54.419349999999994,kg NMVOC equivalents,54.419349999999994
+Photochemical ozone formation - human health,carbon monoxide (fossil) [out],13.643519999999997,kg NMVOC equivalents,299.19999999999993
+Photochemical ozone formation - human health,sulfur dioxide [out],5.517398118743741,kg NMVOC equivalents,68.03203598944194
+Photochemical ozone formation - human health,ethane [out],0.5657599999999999,kg NMVOC equivalents,2.7199999999999998
+Photochemical ozone formation - human health,volatile organic compound [out],0.048988515426461696,kg NMVOC equivalents,0.20846176777217745
+Photochemical ozone formation - human health,benzene [out],0.029765440858181533,kg NMVOC equivalents,0.080884350158102
+Photochemical ozone formation - human health,carbon monoxide (fossil) [out],0.016740635837757895,kg NMVOC equivalents,0.36711920696837486
+Photochemical ozone formation - human health,nitrogen monoxide [out],0.00776146563880703,kg NMVOC equivalents,0.00776146563880703
+Photochemical ozone formation - human health,ethylene [out],0.00309896145,kg NMVOC equivalents,0.001833705
+Photochemical ozone formation - human health,methane (fossil) [out],0.0023049967424544466,kg NMVOC equivalents,0.2282174992529155
+Photochemical ozone formation - human health,toluene [out],1.6523999999999998e-06,kg NMVOC equivalents,1.5299999999999998e-06
+Photochemical ozone formation - human health,methane (fossil) [out],9.35557961659657e-08,kg NMVOC equivalents,9.262950115442148e-06
+"Resource use, fossils",hard coal [in],1016.7220384192987,MJ,1016.7220384192987
+"Resource use, fossils",crude oil [in],83.47771585158308,MJ,83.47771585158308
+"Resource use, fossils",natural gas [in],10.314713999999997,MJ,10.314713999999997
+Water use,freshwater [in],23115.97193469465,m3-world equivalents,538.2065642536589
+Water use,water [in],11287.260000000002,m3-world equivalents,262.8
+Water use,Water [out],-84.22615259999999,m3-world equivalents,1.9610279999999998

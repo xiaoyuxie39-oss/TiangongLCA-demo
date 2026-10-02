@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Results Board</title>
+<style>
+  :root {
+    --bg: #ffffff; --ink: #1e1a17; --ink-2: #4a403a; --muted: #7a8c7e; --line: #e4e6e0; --tint: #eef1ea;
+    --sve: #b8622e; --bio: #5b7f3a; --accent: #2f6f8f; --paper: #d9a441;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --bg: #1b1715; --ink: #f1ece6; --ink-2: #cfc6bd; --muted: #9aa89d; --line: #34302c; --tint: #262220; --sve: #d9834f; --bio: #86ad5f; --accent: #5f9fc2; color-scheme: dark; }
+  }
+  :root[data-theme="dark"] { --bg: #1b1715; --ink: #f1ece6; --ink-2: #cfc6bd; --muted: #9aa89d; --line: #34302c; --tint: #262220; --sve: #d9834f; --bio: #86ad5f; --accent: #5f9fc2; color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; padding-block: 20px 40px; padding-inline: 20px; }
+  .wrap { max-width: 1180px; margin-inline: auto; display: grid; gap: 18px; }
+  header { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 16px; }
+  h1 { font: 700 26px/1.1 Cambria, Georgia, serif; margin: 0; }
+  header p { margin: 0; color: var(--muted); }
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
+  .tile { background: var(--tint); border-radius: 10px; padding: 12px 14px; }
+  .tile .big { font: 700 30px/1.1 Cambria, Georgia, serif; font-variant-numeric: tabular-nums; }
+  .tile .lbl { font-size: 12px; color: var(--muted); letter-spacing: .02em; text-transform: uppercase; margin-top: 4px; }
+  .tile.sve .big { color: var(--sve); } .tile.bio .big { color: var(--bio); } .tile.ratio .big { color: var(--accent); }
+  .grid { display: grid; grid-template-columns: 1fr; gap: 18px; }
+  @media (min-width: 900px) { .grid { grid-template-columns: 3fr 2fr; } }
+  section { border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
+  h2 { font: 600 16px/1.2 system-ui, sans-serif; margin: 0 0 10px; }
+  .chart { width: 100%; overflow-x: auto; }
+  svg { display: block; width: 100%; height: auto; }
+  .legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 13px; color: var(--ink-2); margin-top: 6px; }
+  .legend span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; background: var(--c); }
+  form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  form .full { grid-column: 1 / -1; }
+  label { display: grid; gap: 4px; font-size: 12px; color: var(--muted); }
+  input, select, button { font: inherit; }
+  input, select { width: 100%; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); }
+  input:focus, select:focus, button:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .btns { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  button { padding: 8px 14px; border-radius: 8px; border: 1px solid var(--line); background: var(--tint); color: var(--ink); cursor: pointer; }
+  button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  button.danger { color: #a0362a; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+  th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .03em; }
+  td.num { text-align: right; }
+  .pill { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 12px; color: #fff; }
+  .pill.SVE { background: var(--sve); } .pill.Biopile { background: var(--bio); }
+  .tableWrap { overflow-x: auto; }
+  .hint { font-size: 13px; color: var(--muted); }
+  .status { font-size: 13px; color: var(--accent); min-height: 1.2em; }
+  .empty { color: var(--muted); padding: 24px 0; text-align: center; }
+  @media (prefers-reduced-motion: no-preference) { circle { transition: r .15s; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>Results board</h1>
+      <p>SVE vs biopile, 1,000 m³ TPH-contaminated soil. One row per group: electricity provider chosen and climate change total.</p>
+    </div>
+    <p class="hint">Stored in this browser only. Export CSV before closing.</p>
+  </header>
+
+  <div class="tiles" id="tiles"></div>
+
+  <div class="grid">
+    <section>
+      <h2>Climate change by group and electricity provider</h2>
+      <div class="chart" id="chart"></div>
+      <div class="legend">
+        <span style="--c: var(--sve)">SVE</span>
+        <span style="--c: var(--bio)">Biopile</span>
+        <span style="--c: var(--paper)">Paper, Table 5: 360 t and 52.1 t CO₂</span>
+      </div>
+    </section>
+
+    <section>
+      <h2>Add a result</h2>
+      <form id="form">
+        <label>Group<input id="group" name="group" placeholder="e.g. Table 3" required></label>
+        <label>System<select id="system" name="system"><option>SVE</option><option>Biopile</option></select></label>
+        <label class="full">Electricity provider (TianGong)<input id="provider" name="provider" list="provinces" placeholder="China average, Sichuan, Shandong…" required></label>
+        <datalist id="provinces"></datalist>
+        <label>Climate change, t CO₂-eq<input id="gwp" name="gwp" type="number" step="0.1" min="0" required></label>
+        <label>Note (optional)<input id="note" name="note" placeholder="e.g. hydro-heavy grid"></label>
+        <div class="full btns">
+          <button class="primary" type="submit">Add row</button>
+          <button type="button" id="demo">Load example rows</button>
+          <span class="status" id="status" aria-live="polite"></span>
+        </div>
+      </form>
+      <div class="btns" style="margin-top:12px">
+        <button type="button" id="export">Export CSV</button>
+        <label style="display:inline"><span class="hint" style="cursor:pointer;text-decoration:underline">Import CSV</span><input type="file" id="import" accept=".csv,text/csv" hidden></label>
+        <button type="button" class="danger" id="clear">Clear board</button>
+      </div>
+    </section>
+  </div>
+
+  <section>
+    <h2>All rows</h2>
+    <div class="tableWrap"><table id="table"></table></div>
+  </section>
+</div>
+
+<script>
+(function () {
+  const KEY = 'tiangong-board-v1';
+  const PAPER = { SVE: 360, Biopile: 52.1 };
+  const PROVINCES = ['China average', 'Anhui', 'Beijing', 'Chongqing', 'Fujian', 'Gansu', 'Guangdong', 'Guangxi', 'Guizhou', 'Hainan', 'Hebei', 'Heilongjiang', 'Henan', 'Hubei', 'Hunan', 'Inner Mongolia', 'Jiangsu', 'Jiangxi', 'Jilin', 'Liaoning', 'Ningxia', 'Qinghai', 'Shaanxi', 'Shandong', 'Shanghai', 'Shanxi', 'Sichuan', 'Tianjin', 'Xinjiang', 'Yunnan', 'Zhejiang'];
+  const $ = (id) => document.getElementById(id);
+  let rows = [];
+  try { rows = JSON.parse(localStorage.getItem(KEY) || '[]'); } catch (e) { rows = []; }
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(rows)); } catch (e) { /* storage unavailable */ } };
+  const fmt = (v) => Number(v).toLocaleString(undefined, { maximumFractionDigits: 1 });
+  const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+  PROVINCES.forEach((p) => { const o = document.createElement('option'); o.value = p; $('provinces').appendChild(o); });
+
+  function range(sys) {
+    const v = rows.filter((r) => r.system === sys).map((r) => r.gwp);
+    if (!v.length) return null;
+    return [Math.min(...v), Math.max(...v)];
+  }
+  function renderTiles() {
+    const s = range('SVE'), b = range('Biopile');
+    const groups = new Set(rows.map((r) => r.group)).size;
+    const ratio = s && b ? [s[0] / b[1], s[1] / b[0]] : null;
+    $('tiles').innerHTML = [
+      ['', groups, 'groups reporting'],
+      ['sve', s ? `${fmt(s[0])}–${fmt(s[1])} t` : '—', 'SVE, climate change'],
+      ['bio', b ? `${fmt(b[0])}–${fmt(b[1])} t` : '—', 'Biopile, climate change'],
+      ['ratio', ratio ? `${ratio[0].toFixed(1)}–${ratio[1].toFixed(1)}×` : '—', 'SVE / Biopile (paper 6.9×)'],
+    ].map(([cls, big, lbl]) => `<div class="tile ${cls}"><div class="big">${big}</div><div class="lbl">${lbl}</div></div>`).join('');
+  }
+  function renderChart() {
+    const W = 760, H = 250, L = 90, R = 24, T = 20, B = 44;
+    const vals = rows.map((r) => r.gwp).concat([PAPER.SVE, PAPER.Biopile]);
+    const max = Math.max(10, ...vals) * 1.12;
+    const x = (v) => L + (v / max) * (W - L - R);
+    const yRow = { SVE: T + 55, Biopile: T + 140 };
+    const ticks = 5;
+    let g = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Strip plot of climate change totals by system">`;
+    g += `<style>text{font:12px system-ui,sans-serif;fill:var(--ink-2)} .lab{font-size:11px;fill:var(--ink)} .grid{stroke:var(--line)} .axis{fill:var(--muted)}</style>`;
+    for (let i = 0; i <= ticks; i++) {
+      const v = (max / ticks) * i;
+      g += `<line class="grid" x1="${x(v)}" y1="${T}" x2="${x(v)}" y2="${H - B + 6}"/>`;
+      g += `<text class="axis" x="${x(v)}" y="${H - B + 22}" text-anchor="middle">${fmt(v)}</text>`;
+    }
+    g += `<text class="axis" x="${W - R}" y="${H - 6}" text-anchor="end">t CO₂-eq (climate change, EF 3.1)</text>`;
+    ['SVE', 'Biopile'].forEach((sys) => {
+      const y = yRow[sys];
+      const col = sys === 'SVE' ? 'var(--sve)' : 'var(--bio)';
+      g += `<text x="${L - 12}" y="${y + 4}" text-anchor="end" style="fill:${col};font-weight:600">${sys}</text>`;
+      g += `<line x1="${L}" y1="${y}" x2="${W - R}" y2="${y}" stroke="var(--line)"/>`;
+      const px = x(PAPER[sys]);
+      g += `<line x1="${px}" y1="${y - 26}" x2="${px}" y2="${y + 26}" stroke="var(--paper)" stroke-width="2" stroke-dasharray="4 3"/>`;
+      g += `<text x="${px}" y="${y - 30}" text-anchor="middle" style="fill:var(--paper);font-size:11px">paper ${PAPER[sys]} t</text>`;
+      const pts = rows.filter((r) => r.system === sys);
+      pts.forEach((r, i) => {
+        const cx = x(r.gwp), cy = y + ((i % 3) - 1) * 12;
+        g += `<circle cx="${cx}" cy="${cy}" r="6" fill="${col}" fill-opacity=".85"><title>${esc(r.group)} · ${esc(r.provider)} · ${fmt(r.gwp)} t</title></circle>`;
+        if (pts.length <= 14) g += `<text class="lab" x="${cx}" y="${cy - 10}" text-anchor="middle">${esc(r.provider.replace('China average', 'CN avg'))}</text>`;
+      });
+    });
+    g += '</svg>';
+    $('chart').innerHTML = g;
+  }
+  function renderTable() {
+    if (!rows.length) { $('table').innerHTML = '<tr><td class="empty">No rows yet. Add the first group\'s result on the right.</td></tr>'; return; }
+    const head = '<tr><th>Group</th><th>System</th><th>Electricity provider</th><th class="num">t CO₂-eq</th><th>vs paper</th><th>Note</th><th></th></tr>';
+    const body = rows.map((r, i) => `<tr>
+      <td>${esc(r.group)}</td><td><span class="pill ${r.system}">${r.system}</span></td><td>${esc(r.provider)}</td>
+      <td class="num">${fmt(r.gwp)}</td><td class="num">${(r.gwp / PAPER[r.system]).toFixed(2)}×</td><td>${esc(r.note || '')}</td>
+      <td><button type="button" data-del="${i}" aria-label="Delete row">✕</button></td></tr>`).join('');
+    $('table').innerHTML = head + body;
+  }
+  function render() { renderTiles(); renderChart(); renderTable(); }
+
+  $('form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const r = { group: $('group').value.trim(), system: $('system').value, provider: $('provider').value.trim(), gwp: parseFloat($('gwp').value), note: $('note').value.trim(), t: Date.now() };
+    if (!r.group || !r.provider || !isFinite(r.gwp)) { $('status').textContent = 'Group, provider and a number are needed.'; return; }
+    rows.push(r); save(); render();
+    $('status').textContent = `Added ${r.group} (${r.system}, ${r.provider}).`;
+    $('gwp').value = ''; $('note').value = ''; $('gwp').focus();
+  });
+  $('table').addEventListener('click', (e) => {
+    const b = e.target.closest('button[data-del]'); if (!b) return;
+    rows.splice(Number(b.dataset.del), 1); save(); render();
+  });
+  $('demo').addEventListener('click', () => {
+    rows = [
+      { group: 'Example A', system: 'SVE', provider: 'China average', gwp: 300, note: 'example row' },
+      { group: 'Example B', system: 'SVE', provider: 'Sichuan', gwp: 240, note: 'hydro-heavy grid' },
+      { group: 'Example C', system: 'SVE', provider: 'Inner Mongolia', gwp: 340, note: 'coal-heavy grid' },
+      { group: 'Example A', system: 'Biopile', provider: 'China average', gwp: 45, note: 'example row' },
+      { group: 'Example B', system: 'Biopile', provider: 'Sichuan', gwp: 30, note: '' },
+    ];
+    save(); render(); $('status').textContent = 'Example rows loaded (replace them with real ones).';
+  });
+  $('clear').addEventListener('click', () => {
+    if ($('clear').dataset.armed) { rows = []; save(); render(); delete $('clear').dataset.armed; $('clear').textContent = 'Clear board'; $('status').textContent = 'Board cleared.'; return; }
+    $('clear').dataset.armed = '1'; $('clear').textContent = 'Click again to clear'; setTimeout(() => { delete $('clear').dataset.armed; $('clear').textContent = 'Clear board'; }, 4000);
+  });
+  $('export').addEventListener('click', () => {
+    const csv = ['group,system,provider,gwp_t_co2eq,note'].concat(rows.map((r) => [r.group, r.system, r.provider, r.gwp, r.note || ''].map((v) => '"' + String(v).replace(/"/g, '""') + '"').join(','))).join('\n');
+    const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' })); a.download = 'results_board.csv'; a.click();
+  });
+  $('import').addEventListener('change', (e) => {
+    const f = e.target.files[0]; if (!f) return;
+    const rd = new FileReader();
+    rd.onload = () => {
+      const lines = String(rd.result).split(/\r?\n/).filter(Boolean).slice(1);
+      const parsed = lines.map((l) => { const m = l.match(/("([^"]|"")*"|[^,]*)(,|$)/g).map((c) => c.replace(/,$/, '').replace(/^"|"$/g, '').replace(/""/g, '"')); return { group: m[0], system: m[1] === 'Biopile' ? 'Biopile' : 'SVE', provider: m[2], gwp: parseFloat(m[3]), note: m[4] || '' }; }).filter((r) => r.group && isFinite(r.gwp));
+      rows = rows.concat(parsed); save(); render(); $('status').textContent = `Imported ${parsed.length} rows.`;
+    };
+    rd.readAsText(f);
+  });
+  render();
+})();
+</script>
+</body>
+</html>

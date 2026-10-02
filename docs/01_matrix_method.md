@@ -54,7 +54,9 @@ Column sums of `H_process` equal `h`. That identity is the first test.
 
 1. If `case/provider_choices.json` names a provider for this flow (globally, or for this consuming stage), use it.
 2. Else collect all processes whose `ref_flow` equals the flow.
-3. If exactly one: use it. If several: prefer same `geo` as the consumer, then the latest `year`, then the smallest uuid.
+3. If exactly one: use it. If several: prefer the most specific geography match (shared trailing tokens of the location code),
+   on ties the more general dataset (a `CN` consumer gets the national mix, not an arbitrary province), then the latest `year`,
+   then the smallest uuid. Records whose reference exchange is an input, or that consume their own product, are never providers.
 4. Record every automatic choice in the result (`provider_log`) so a student can see it and override it.
 
 ## Toy example (three processes)

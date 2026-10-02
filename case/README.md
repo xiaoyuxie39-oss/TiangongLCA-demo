@@ -20,4 +20,10 @@ Schema of a provider entry:
 }
 ```
 
-Status: entries marked `"todo": true` are filled in during M1 from the snapshot (`reference/build_case_bundle.py --check` lists them).
+Optional keys: `"addons": [...]` (documented direct emissions or extra inputs per printed unit, see `AGENTS.md`),
+`"confidence"`, `"verified"`, `"data_quality_notes"`. The top-level `"_background_overrides": {<flow uuid>: <provider uuid>}`
+pins a provider for a background flow.
+
+Status (2026-10-02): all 20 items mapped by the agent workflow in `case/mapping/` and verified; 2 declared cut-offs
+(diesel, with a combustion add-on; microbial inoculum). `python3 reference/build_case_bundle.py --check` reports 0 problems.
+Full reasoning per item: `docs/05_provider_mapping_decisions.md`.

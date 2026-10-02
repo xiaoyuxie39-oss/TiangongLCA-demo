@@ -9,4 +9,6 @@
    `docs/04_case_study_sve_biopile.md`), link them as a product system, and list every inconsistency with `case/foreground_*.json`.
 5. **Monte Carlo lite.** Give each foreground amount a ±20 % uniform range, sample 1,000 times in the browser, and show the
    probability that SVE > Biopile for the selected category.
-6. **Swap the background.** Point `reference/build_case_bundle.py` at a different electricity flow or region set and regenerate the bundle; compare.
+6. **Fix the GAC gap.** TianGong's activated-carbon records have no inputs, so GAC scores ≈ 0 while the paper gives it 36 % of SVE's
+   impact. Find a sourced cradle-to-gate figure (e.g. Bayer et al. 2005, the paper's own source), add it as an `addons` entry on
+   `activated_carbon` in `case/provider_choices.json`, regenerate, and report how the SVE/biopile ratio moves.

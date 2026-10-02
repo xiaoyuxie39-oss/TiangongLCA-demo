@@ -1,0 +1,27 @@
+  lciamethods: 25/25
+  Acidification: 935 factors
+  Climate change: 1099 factors
+  Climate change-Biogenic: 13 factors
+  Climate change-Fossil: 1074 factors
+  Climate change-Land use and land use change: 12 factors
+  Ecotoxicity, freshwater: 79349 factors
+  Ecotoxicity, freshwater_inorganics: 6198 factors
+  Ecotoxicity, freshwater_organics: 73151 factors
+  EF-particulate Matter: 983 factors
+  Eutrophication marine: 590 factors
+  Eutrophication, freshwater: 29 factors
+  Eutrophication, terrestrial: 575 factors
+  Human toxicity, cancer: 13717 factors
+  Human toxicity, cancer_inorganics: 398 factors
+  Human toxicity, cancer_organics: 13319 factors
+  Human toxicity, non-cancer: 43816 factors
+  Human toxicity, non-cancer_inorganics: 4317 factors
+  Human toxicity, non-cancer_organics: 39499 factors
+  Ionising radiation, human health: 189 factors
+  Land use: 36423 factors
+  Ozone depletion: 124 factors
+  Photochemical ozone formation - human health: 1401 factors
+  Resource use, fossils: 6 factors
+  Resource use, minerals and metals: 48 factors
+  Water use: 2310 factors
+== methods refreshed in 35s

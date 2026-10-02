@@ -1,0 +1,18 @@
+row \ col,"Biopile, ex situ on site",Transportation,Excavation,Site preparation,Biopile operation,GAC replacement,Backfilling,"Acetylene ; Calcium carbide, water ; Dry Process ; All sizes; NESPS2","Bio-based ammonia production ; Ammonia ; Electrolysis-based route ; N2, H2","Carbonization, activation ; Coal activated carbon ; Raw material coal ; Physical activation process ; All sizes; NESPS2","Combustion - natural gas ; Potassium Sulfate ; Potassium chloride, sulfuric acid ; Mannheim method ; All sizes; NESPS2",Electricity production ; Electricity mix ; China,High Density Polyethylene (HDPE)  production;HDPE,Highway transport for cargo and auxiliary activities| CEEIO | 2018,PP production;PP,"Sand and gravel aggregate ; Crushed stone, sand and gravel ; Crushing, screening, washing ; All sizes; NESPS2",Tap water ; Surface water ; Coagulation and sedimentation (or clarification) filtration and disinfection processes ; less than or equal to50000 t/d; NESPS2
+"Biopile, ex situ on site",1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+Transportation,-1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+Excavation,-1.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+Site preparation,-1.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+Biopile operation,-1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+GAC replacement,-1.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+Backfilling,-1.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+"Acetylene ; Calcium carbide, water ; Dry Process ; All sizes; NESPS2",0.0,0.0,0.0,-1.15,0.0,0.0,0.0,1000.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+"Bio-based ammonia production ; Ammonia ; Electrolysis-based route ; N2, H2",0.0,0.0,0.0,0.0,-698.664,0.0,0.0,0.0,1000.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+"Carbonization, activation ; Coal activated carbon ; Raw material coal ; Physical activation process ; All sizes; NESPS2",0.0,0.0,0.0,0.0,0.0,-1368.0,0.0,0.0,0.0,1000.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+"Combustion - natural gas ; Potassium Sulfate ; Potassium chloride, sulfuric acid ; Mannheim method ; All sizes; NESPS2",0.0,0.0,0.0,0.0,-558.0,0.0,0.0,0.0,0.0,0.0,1000.0,0.0,0.0,0.0,0.0,0.0,0.0
+Electricity production ; Electricity mix ; China,0.0,0.0,0.0,0.0,-229320.0,0.0,0.0,0.0,-7200.0,0.0,0.0,3.6,-1.5,0.0,-4.0,0.0,0.0
+High Density Polyethylene (HDPE)  production;HDPE,0.0,0.0,0.0,-1198.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0
+Highway transport for cargo and auxiliary activities| CEEIO | 2018,0.0,-283.959,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,576265985949.3751,0.0,0.0,0.0
+PP production;PP,0.0,0.0,0.0,-180.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0
+"Sand and gravel aggregate ; Crushed stone, sand and gravel ; Crushing, screening, washing ; All sizes; NESPS2",0.0,0.0,0.0,-108480.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1000.0,0.0
+Tap water ; Surface water ; Coagulation and sedimentation (or clarification) filtration and disinfection processes ; less than or equal to50000 t/d; NESPS2,0.0,0.0,0.0,0.0,-67400.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1000.0

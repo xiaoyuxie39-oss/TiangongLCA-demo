@@ -25,6 +25,7 @@ BASE = "https://lcdn.tiangong.earth/resource"
 OUT = pathlib.Path(__file__).resolve().parent / "snapshot"
 WORKERS = 6
 LIMIT = None
+METHODS_ONLY = "--methods-only" in sys.argv
 if "--limit" in sys.argv:
     LIMIT = int(sys.argv[sys.argv.index("--limit") + 1])
 
@@ -140,7 +141,11 @@ def compact_method(uuid):
     factors = []
     for f in as_list(m.get("characterisationFactors", {}).get("factor")):
         fl = f.get("referenceToFlowDataSet", {})
-        factors.append([fl.get("refObjectId"), "in" if f.get("exchangeDirection") == "Input" else "out", f.get("meanValue")])
+        loc = f.get("location")
+        rec = [fl.get("refObjectId"), "in" if f.get("exchangeDirection") == "Input" else "out", f.get("meanValue")]
+        if loc:
+            rec.append(loc)  # regionalised factor; rows without a 4th element are the generic factor
+        factors.append(rec)
     return {
         "uuid": info.get("UUID", uuid),
         "version": m.get("version"),
@@ -156,6 +161,19 @@ def compact_method(uuid):
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
+    if METHODS_ONLY:
+        mlist = page_all("lciamethods", page_size=100)
+        methods = []
+        with cf.ThreadPoolExecutor(WORKERS) as ex:
+            for m in ex.map(lambda x: compact_method(x["uuid"]), mlist):
+                methods.append(m)
+                print(f"  {m['name']}: {len(m['factors'])} factors", flush=True)
+        (OUT / "lcia_methods.json").write_text(json.dumps(methods, ensure_ascii=False))
+        raw = (OUT / "lcia_methods.json").read_bytes()
+        with gzip.open(OUT / "lcia_methods.json.gz", "wb", compresslevel=9) as gz:
+            gz.write(raw)
+        print(f"== methods refreshed in {time.time()-t0:.0f}s", flush=True)
+        return
     print("== listing processes", flush=True)
     plist = page_all("processes")
     print("== listing flows", flush=True)

@@ -1,9 +1,694 @@
 {
-  "generated_by": null,
-  "snapshot": null,
-  "bundle_sha256": null,
-  "tolerance_rel": 0.01,
-  "systems": {"SVE": null, "Biopile": null},
-  "identities": ["sum_process_equals_total", "sum_stage_equals_total"],
-  "_status": "PLACEHOLDER — produced in M2 by reference/run_case.py --write-expected. Tests must fail while this is null."
+ "generated_by": "reference/run_case.py",
+ "snapshot": "2026-10-02T08:26:52+00:00",
+ "bundle_sha256": "5871a83fb191a908da23b6ecf4ed45231c361ce624bf91f0dc1382a1136290a3",
+ "tolerance_rel": 0.01,
+ "systems": {
+  "SVE": {
+   "totals": {
+    "Acidification": {
+     "value": 199.1452652375857,
+     "unit": "mol H+ equivalents"
+    },
+    "Climate change": {
+     "value": 92800.51965579714,
+     "unit": "kg CO2 Equivalents"
+    },
+    "Climate change-Biogenic": {
+     "value": 0.0,
+     "unit": "kg CO2-Equivalents"
+    },
+    "Climate change-Fossil": {
+     "value": 92800.51965579714,
+     "unit": "kg CO2 Equivalents"
+    },
+    "Climate change-Land use and land use change": {
+     "value": 0.0,
+     "unit": "kg CO2-Equivalents"
+    },
+    "Ecotoxicity, freshwater": {
+     "value": 10.349236014914935,
+     "unit": "CTUe"
+    },
+    "Ecotoxicity, freshwater_inorganics": {
+     "value": 9.561581458251904,
+     "unit": "CTUe"
+    },
+    "Ecotoxicity, freshwater_organics": {
+     "value": 0.7876545566630282,
+     "unit": "CTUe"
+    },
+    "EF-particulate Matter": {
+     "value": 0.0015504617033915689,
+     "unit": "disease incidence"
+    },
+    "Eutrophication marine": {
+     "value": 57.82609466597073,
+     "unit": "kg N equivalents"
+    },
+    "Eutrophication, freshwater": {
+     "value": 0.0,
+     "unit": "kg P equivalents"
+    },
+    "Eutrophication, terrestrial": {
+     "value": 633.3499299189423,
+     "unit": "mol N equivalents"
+    },
+    "Human toxicity, cancer": {
+     "value": 2.4824626951751957e-08,
+     "unit": " CTUh "
+    },
+    "Human toxicity, cancer_inorganics": {
+     "value": 1.0794135389934994e-08,
+     "unit": " CTUh "
+    },
+    "Human toxicity, cancer_organics": {
+     "value": 1.4030491561816961e-08,
+     "unit": " CTUh "
+    },
+    "Human toxicity, non-cancer": {
+     "value": 1.127910276537019e-06,
+     "unit": "CTUh"
+    },
+    "Human toxicity, non-cancer_inorganics": {
+     "value": 9.582003645618309e-07,
+     "unit": "CTUh"
+    },
+    "Human toxicity, non-cancer_organics": {
+     "value": 1.6970991197518794e-07,
+     "unit": "CTUh"
+    },
+    "Ionising radiation, human health": {
+     "value": 0.0,
+     "unit": "kBq U235 equivalents"
+    },
+    "Land use": {
+     "value": 0.2493432,
+     "unit": "dimensionless (pt)"
+    },
+    "Ozone depletion": {
+     "value": 0.0,
+     "unit": "kg CFC11 equivalents"
+    },
+    "Photochemical ozone formation - human health": {
+     "value": 168.47497600412515,
+     "unit": "kg NMVOC equivalents"
+    },
+    "Resource use, fossils": {
+     "value": 1110.5144682708817,
+     "unit": "MJ"
+    },
+    "Resource use, minerals and metals": {
+     "value": 0.0,
+     "unit": "kg Sb equivalents"
+    },
+    "Water use": {
+     "value": 34319.00578209465,
+     "unit": "m3-world equivalents"
+    }
+   },
+   "by_stage": {
+    "Acidification": {
+     "transport": 0.9356745694503639,
+     "foundation": 6.621457703628792,
+     "wells": 0.6425539931633235,
+     "assembly": 41.72638115472742,
+     "operation": 36.916207816615824,
+     "gac": 112.30299
+    },
+    "Climate change": {
+     "transport": 206.4759790944506,
+     "foundation": 4357.089756569669,
+     "wells": 418.36459993496686,
+     "assembly": 1426.5449280106307,
+     "operation": 86392.04439218741,
+     "gac": 0.0
+    },
+    "Climate change-Biogenic": {
+     "transport": 0.0,
+     "foundation": 0.0,
+     "wells": 0.0,
+     "assembly": 0.0,
+     "operation": 0.0,
+     "gac": 0.0
+    },
+    "Climate change-Fossil": {
+     "transport": 206.4759790944506,
+     "foundation": 4357.089756569669,
+     "wells": 418.36459993496686,
+     "assembly": 1426.5449280106307,
+     "operation": 86392.04439218741,
+     "gac": 0.0
+    },
+    "Climate change-Land use and land use change": {
+     "transport": 0.0,
+     "foundation": 0.0,
+     "wells": 0.0,
+     "assembly": 0.0,
+     "operation": 0.0,
+     "gac": 0.0
+    },
+    "Ecotoxicity, freshwater": {
+     "transport": 3.1832442694360514,
+     "foundation": 0.00024311039689257796,
+     "wells": 0.033939941580065414,
+     "assembly": 7.064758989020144,
+     "operation": 0.06704970448178157,
+     "gac": 0.0
+    },
+    "Ecotoxicity, freshwater_inorganics": {
+     "transport": 2.710715635643868,
+     "foundation": 4.02657003777595e-10,
+     "wells": 0.01803531099117919,
+     "assembly": 6.832830400161638,
+     "operation": 1.1105256482608123e-07,
+     "gac": 0.0
+    },
+    "Ecotoxicity, freshwater_organics": {
+     "transport": 0.472528633792183,
+     "foundation": 0.0002431099942355742,
+     "wells": 0.015904630588886227,
+     "assembly": 0.23192858885850667,
+     "operation": 0.06704959342921675,
+     "gac": 0.0
+    },
+    "EF-particulate Matter": {
+     "transport": 2.9762772788309436e-05,
+     "foundation": 0.0005703027723844337,
+     "wells": 5.707407777447197e-05,
+     "assembly": 0.00023542354810563245,
+     "operation": 0.00015682173233872205,
+     "gac": 0.0005010767999999999
+    },
+    "Eutrophication marine": {
+     "transport": 0.4813823477166599,
+     "foundation": 1.762649719489117,
+     "wells": 0.1886630562483386,
+     "assembly": 21.63003960738329,
+     "operation": 9.144327935133333,
+     "gac": 24.619032
+    },
+    "Eutrophication, freshwater": {
+     "transport": 0.0,
+     "foundation": 0.0,
+     "wells": 0.0,
+     "assembly": 0.0,
+     "operation": 0.0,
+     "gac": 0.0
+    },
+    "Eutrophication, terrestrial": {
+     "transport": 5.359016279261194,
+     "foundation": 19.303053506357166,
+     "wells": 2.0660490204067936,
+     "assembly": 236.87395560680022,
+     "operation": 100.14097550611694,
+     "gac": 269.60688
+    },
+    "Human toxicity, cancer": {
+     "transport": 1.0794135389934994e-08,
+     "foundation": 5.05630911787281e-11,
+     "wells": 5.1590272074293046e-12,
+     "assembly": 2.9498634148526445e-11,
+     "operation": 1.3945270809282274e-08,
+     "gac": 0.0
+    },
+    "Human toxicity, cancer_inorganics": {
+     "transport": 1.0794135389934994e-08,
+     "foundation": 0.0,
+     "wells": 0.0,
+     "assembly": 0.0,
+     "operation": 0.0,
+     "gac": 0.0
+    },
+    "Human toxicity, cancer_organics": {
+     "transport": 0.0,
+     "foundation": 5.05630911787281e-11,
+     "wells": 5.1590272074293046e-12,
+     "assembly": 2.9498634148526445e-11,
+     "operation": 1.3945270809282274e-08,
+     "gac": 0.0
+    },
+    "Human toxicity, non-cancer": {
+     "transport": 9.799674634745089e-07,
+     "foundation": 1.2644863725620215e-08,
+     "wells": 9.521785968862996e-11,
+     "assembly": 1.3120698364175235e-07,
+     "operation": 3.99574783544897e-09,
+     "gac": 0.0
+    },
+    "Human toxicity, non-cancer_inorganics": {
+     "transport": 9.58200350837342e-07,
+     "foundation": 0.0,
+     "wells": 1.37244888e-14,
+     "assembly": 0.0,
+     "operation": 0.0,
+     "gac": 0.0
+    },
+    "Human toxicity, non-cancer_organics": {
+     "transport": 2.176711263716684e-08,
+     "foundation": 1.2644863725620215e-08,
+     "wells": 9.520413519982996e-11,
+     "assembly": 1.3120698364175235e-07,
+     "operation": 3.99574783544897e-09,
+     "gac": 0.0
+    },
+    "Ionising radiation, human health": {
+     "transport": 0.0,
+     "foundation": 0.0,
+     "wells": 0.0,
+     "assembly": 0.0,
+     "operation": 0.0,
+     "gac": 0.0
+    },
+    "Land use": {
+     "transport": 0.0,
+     "foundation": 0.0,
+     "wells": 0.2493432,
+     "assembly": 0.0,
+     "operation": 0.0,
+     "gac": 0.0
+    },
+    "Ozone depletion": {
+     "transport": 0.0,
+     "foundation": 0.0,
+     "wells": 0.0,
+     "assembly": 0.0,
+     "operation": 0.0,
+     "gac": 0.0
+    },
+    "Photochemical ozone formation - human health": {
+     "transport": 1.303650783272109,
+     "foundation": 4.733676017385434,
+     "wells": 0.502397873500065,
+     "assembly": 69.84944050259254,
+     "operation": 24.744676127375023,
+     "gac": 67.3411347
+    },
+    "Resource use, fossils": {
+     "transport": 0.0,
+     "foundation": 741.2669057049607,
+     "wells": 75.82353507961761,
+     "assembly": 204.09102455771313,
+     "operation": 89.33300292859121,
+     "gac": 0.0
+    },
+    "Resource use, minerals and metals": {
+     "transport": 0.0,
+     "foundation": 0.0,
+     "wells": 0.0,
+     "assembly": 0.0,
+     "operation": 0.0,
+     "gac": 0.0
+    },
+    "Water use": {
+     "transport": 0.0,
+     "foundation": 83.35803890757764,
+     "wells": 11212.087454557057,
+     "assembly": 33.46218351452022,
+     "operation": 22990.098105115496,
+     "gac": 0.0
+    }
+   },
+   "cutoffs": [
+    {
+     "where": "SVE/foundation",
+     "item": "diesel_machinery",
+     "flow": null,
+     "amount": 21,
+     "unit": "L",
+     "why": "Declared cut-off: the frozen TianGong snapshot has no dataset whose reference OUTPUT is diesel (or any gas-oil/light-fuel-oil equivalent), and no 'diesel burned in machinery' service. The hint flow 1cda7c03 'Diesel' shows 3 producers, but all three (1cc17669 grain drying, 585f29f8 paint furnace, 7eac9761 chamber furnace; NESPS2 CN 2019) are pollution-census coefficient sets whose reference exchange is a 1000 kg diesel INPUT with NOx/PM/SO2 outputs only (NOx ~3 g/kg, SO2 = 0, no CO2) and an unlinked 'Exhaust gas' product output. reference/lca_matrix.py (line ~125) only places ref exchanges with dir=='out' on the diagonal, so linking to any of them raises 'columns without reference output (A diagonal 0)', and build_case_bundle.py --check rejects them as 'consumes its own reference flow'. The second hint flow 55a4c166 'Diesel' (the one TianGong's own KR-2011 biopile excavation/backfill/hard … | VERIFIER: ACCEPT the declared cut-off. Independently reproduced every claim: no diesel (or gas-oil / light-fuel-oil / transport-service) flow in the snapshot has a usable producer; the 3 nominal producers of 1cda7c03 are input-referenced combustion coefficient sets that would zero the A diagonal and trip the bundle checker; refinery, CEEIO, crude-extraction and biodiesel datasets are not acceptable proxies; the 0.84 kg/L and 2.68 kg CO2/L factors are physically correct (IPCC 2006 / EN 590). Only a minor w"
+    },
+    {
+     "where": "SVE/wells",
+     "item": "diesel_machinery",
+     "flow": null,
+     "amount": 11,
+     "unit": "L",
+     "why": "Declared cut-off: the frozen TianGong snapshot has no dataset whose reference OUTPUT is diesel (or any gas-oil/light-fuel-oil equivalent), and no 'diesel burned in machinery' service. The hint flow 1cda7c03 'Diesel' shows 3 producers, but all three (1cc17669 grain drying, 585f29f8 paint furnace, 7eac9761 chamber furnace; NESPS2 CN 2019) are pollution-census coefficient sets whose reference exchange is a 1000 kg diesel INPUT with NOx/PM/SO2 outputs only (NOx ~3 g/kg, SO2 = 0, no CO2) and an unlinked 'Exhaust gas' product output. reference/lca_matrix.py (line ~125) only places ref exchanges with dir=='out' on the diagonal, so linking to any of them raises 'columns without reference output (A diagonal 0)', and build_case_bundle.py --check rejects them as 'consumes its own reference flow'. The second hint flow 55a4c166 'Diesel' (the one TianGong's own KR-2011 biopile excavation/backfill/hard … | VERIFIER: ACCEPT the declared cut-off. Independently reproduced every claim: no diesel (or gas-oil / light-fuel-oil / transport-service) flow in the snapshot has a usable producer; the 3 nominal producers of 1cda7c03 are input-referenced combustion coefficient sets that would zero the A diagonal and trip the bundle checker; refinery, CEEIO, crude-extraction and biodiesel datasets are not acceptable proxies; the 0.84 kg/L and 2.68 kg CO2/L factors are physically correct (IPCC 2006 / EN 590). Only a minor w"
+    }
+   ],
+   "n_processes_solved": 182
+  },
+  "Biopile": {
+   "totals": {
+    "Acidification": {
+     "value": 312.6216742259062,
+     "unit": "mol H+ equivalents"
+    },
+    "Climate change": {
+     "value": 45878.315229669584,
+     "unit": "kg CO2 Equivalents"
+    },
+    "Climate change-Biogenic": {
+     "value": 0.0,
+     "unit": "kg CO2-Equivalents"
+    },
+    "Climate change-Fossil": {
+     "value": 45878.315229669584,
+     "unit": "kg CO2 Equivalents"
+    },
+    "Climate change-Land use and land use change": {
+     "value": 0.0,
+     "unit": "kg CO2-Equivalents"
+    },
+    "Ecotoxicity, freshwater": {
+     "value": 169.3963223076476,
+     "unit": "CTUe"
+    },
+    "Ecotoxicity, freshwater_inorganics": {
+     "value": 51.329250889023456,
+     "unit": "CTUe"
+    },
+    "Ecotoxicity, freshwater_organics": {
+     "value": 118.06707141862414,
+     "unit": "CTUe"
+    },
+    "EF-particulate Matter": {
+     "value": 0.000773548092208243,
+     "unit": "disease incidence"
+    },
+    "Eutrophication marine": {
+     "value": 155.6514571357422,
+     "unit": "kg N equivalents"
+    },
+    "Eutrophication, freshwater": {
+     "value": 0.0015165000000000007,
+     "unit": "kg P equivalents"
+    },
+    "Eutrophication, terrestrial": {
+     "value": 1704.665890278231,
+     "unit": "mol N equivalents"
+    },
+    "Human toxicity, cancer": {
+     "value": 4.864398715086962e-07,
+     "unit": " CTUh "
+    },
+    "Human toxicity, cancer_inorganics": {
+     "value": 1.26544473008256e-08,
+     "unit": " CTUh "
+    },
+    "Human toxicity, cancer_organics": {
+     "value": 4.737854242078706e-07,
+     "unit": " CTUh "
+    },
+    "Human toxicity, non-cancer": {
+     "value": 2.8079989645989447e-06,
+     "unit": "CTUh"
+    },
+    "Human toxicity, non-cancer_inorganics": {
+     "value": 1.123341092665021e-06,
+     "unit": "CTUh"
+    },
+    "Human toxicity, non-cancer_organics": {
+     "value": 1.6846578719339236e-06,
+     "unit": "CTUh"
+    },
+    "Ionising radiation, human health": {
+     "value": 0.0,
+     "unit": "kBq U235 equivalents"
+    },
+    "Land use": {
+     "value": 0.0,
+     "unit": "dimensionless (pt)"
+    },
+    "Ozone depletion": {
+     "value": 0.0,
+     "unit": "kg CFC11 equivalents"
+    },
+    "Photochemical ozone formation - human health": {
+     "value": 501.5146604173076,
+     "unit": "kg NMVOC equivalents"
+    },
+    "Resource use, fossils": {
+     "value": 162.15871831318,
+     "unit": "MJ"
+    },
+    "Resource use, minerals and metals": {
+     "value": 0.0,
+     "unit": "kg Sb equivalents"
+    },
+    "Water use": {
+     "value": 10177.228612910312,
+     "unit": "m3-world equivalents"
+    }
+   },
+   "by_stage": {
+    "Acidification": {
+     "transport": 1.0969331124818902,
+     "excavation": 0.0,
+     "preparation": 286.72421665663086,
+     "operation": 16.265497216788592,
+     "gac": 8.535027240000002,
+     "backfill": 0.0
+    },
+    "Climate change": {
+     "transport": 242.0610175756587,
+     "excavation": 2152.04,
+     "preparation": 3509.628971896275,
+     "operation": 37822.545240197614,
+     "gac": 0.0,
+     "backfill": 2152.04
+    },
+    "Climate change-Biogenic": {
+     "transport": 0.0,
+     "excavation": 0.0,
+     "preparation": 0.0,
+     "operation": 0.0,
+     "gac": 0.0,
+     "backfill": 0.0
+    },
+    "Climate change-Fossil": {
+     "transport": 242.0610175756587,
+     "excavation": 2152.04,
+     "preparation": 3509.628971896275,
+     "operation": 37822.545240197614,
+     "gac": 0.0,
+     "backfill": 2152.04
+    },
+    "Climate change-Land use and land use change": {
+     "transport": 0.0,
+     "excavation": 0.0,
+     "preparation": 0.0,
+     "operation": 0.0,
+     "gac": 0.0,
+     "backfill": 0.0
+    },
+    "Ecotoxicity, freshwater": {
+     "transport": 3.7318595142687196,
+     "excavation": 0.0,
+     "preparation": 165.63510834877974,
+     "operation": 0.029354444599104183,
+     "gac": 0.0,
+     "backfill": 0.0
+    },
+    "Ecotoxicity, freshwater_inorganics": {
+     "transport": 3.1778930798630545,
+     "excavation": 0.0,
+     "preparation": 48.15135776054167,
+     "operation": 4.861789699981308e-08,
+     "gac": 0.0,
+     "backfill": 0.0
+    },
+    "Ecotoxicity, freshwater_organics": {
+     "transport": 0.5539664344056657,
+     "excavation": 0.0,
+     "preparation": 117.48375058823805,
+     "operation": 0.029354395981207183,
+     "gac": 0.0,
+     "backfill": 0.0
+    },
+    "EF-particulate Matter": {
+     "transport": 3.489222861956118e-05,
+     "excavation": 0.0,
+     "preparation": 0.0006315928523715647,
+     "operation": 6.898117441710674e-05,
+     "gac": 3.80818368e-05,
+     "backfill": 0.0
+    },
+    "Eutrophication marine": {
+     "transport": 0.564346038906305,
+     "excavation": 0.0,
+     "preparation": 149.17164172364252,
+     "operation": 4.044422941190777,
+     "gac": 1.8710464320000004,
+     "backfill": 0.0
+    },
+    "Eutrophication, freshwater": {
+     "transport": 0.0,
+     "excavation": 0.0,
+     "preparation": 2.694195263449656e-19,
+     "operation": 0.0015165000000000003,
+     "gac": 0.0,
+     "backfill": 0.0
+    },
+    "Eutrophication, terrestrial": {
+     "transport": 6.282614275286172,
+     "excavation": 0.0,
+     "preparation": 1633.6020405006575,
+     "operation": 44.291112622259114,
+     "gac": 20.49012288,
+     "backfill": 0.0
+    },
+    "Human toxicity, cancer": {
+     "transport": 1.26544473008256e-08,
+     "excavation": 0.0,
+     "preparation": 4.676801671812419e-07,
+     "operation": 6.105257026631925e-09,
+     "gac": 0.0,
+     "backfill": 0.0
+    },
+    "Human toxicity, cancer_inorganics": {
+     "transport": 1.26544473008256e-08,
+     "excavation": 0.0,
+     "preparation": 0.0,
+     "operation": 0.0,
+     "gac": 0.0,
+     "backfill": 0.0
+    },
+    "Human toxicity, cancer_organics": {
+     "transport": 0.0,
+     "excavation": 0.0,
+     "preparation": 4.676801671812419e-07,
+     "operation": 6.105257026631925e-09,
+     "gac": 0.0,
+     "backfill": 0.0
+    },
+    "Human toxicity, non-cancer": {
+     "transport": 1.1488596515683127e-06,
+     "excavation": 0.0,
+     "preparation": 1.6573899696236487e-06,
+     "operation": 1.749343406972297e-09,
+     "gac": 0.0,
+     "backfill": 0.0
+    },
+    "Human toxicity, non-cancer_inorganics": {
+     "transport": 1.123341092665021e-06,
+     "excavation": 0.0,
+     "preparation": 0.0,
+     "operation": 0.0,
+     "gac": 0.0,
+     "backfill": 0.0
+    },
+    "Human toxicity, non-cancer_organics": {
+     "transport": 2.55185589032918e-08,
+     "excavation": 0.0,
+     "preparation": 1.6573899696236487e-06,
+     "operation": 1.749343406972297e-09,
+     "gac": 0.0,
+     "backfill": 0.0
+    },
+    "Ionising radiation, human health": {
+     "transport": 0.0,
+     "excavation": 0.0,
+     "preparation": 0.0,
+     "operation": 0.0,
+     "gac": 0.0,
+     "backfill": 0.0
+    },
+    "Land use": {
+     "transport": 0.0,
+     "excavation": 0.0,
+     "preparation": 0.0,
+     "operation": 0.0,
+     "gac": 0.0,
+     "backfill": 0.0
+    },
+    "Ozone depletion": {
+     "transport": 0.0,
+     "excavation": 0.0,
+     "preparation": 0.0,
+     "operation": 0.0,
+     "gac": 0.0,
+     "backfill": 0.0
+    },
+    "Photochemical ozone formation - human health": {
+     "transport": 1.5283280725735153,
+     "excavation": 0.0,
+     "preparation": 483.9281156560601,
+     "operation": 10.940290451465675,
+     "gac": 5.117926237200001,
+     "backfill": 0.0
+    },
+    "Resource use, fossils": {
+     "transport": 0.0,
+     "excavation": 0.0,
+     "preparation": 63.690124302216525,
+     "operation": 98.46859401096344,
+     "gac": 0.0,
+     "backfill": 0.0
+    },
+    "Resource use, minerals and metals": {
+     "transport": 0.0,
+     "excavation": 0.0,
+     "preparation": 0.0,
+     "operation": 0.0,
+     "gac": 0.0,
+     "backfill": 0.0
+    },
+    "Water use": {
+     "transport": 0.0,
+     "excavation": 0.0,
+     "preparation": 112.13486758915717,
+     "operation": 10065.093745321154,
+     "gac": 0.0,
+     "backfill": 0.0
+    }
+   },
+   "cutoffs": [
+    {
+     "where": "Biopile/excavation",
+     "item": "diesel_machinery",
+     "flow": null,
+     "amount": 288,
+     "unit": "L",
+     "why": "Declared cut-off: the frozen TianGong snapshot has no dataset whose reference OUTPUT is diesel (or any gas-oil/light-fuel-oil equivalent), and no 'diesel burned in machinery' service. The hint flow 1cda7c03 'Diesel' shows 3 producers, but all three (1cc17669 grain drying, 585f29f8 paint furnace, 7eac9761 chamber furnace; NESPS2 CN 2019) are pollution-census coefficient sets whose reference exchange is a 1000 kg diesel INPUT with NOx/PM/SO2 outputs only (NOx ~3 g/kg, SO2 = 0, no CO2) and an unlinked 'Exhaust gas' product output. reference/lca_matrix.py (line ~125) only places ref exchanges with dir=='out' on the diagonal, so linking to any of them raises 'columns without reference output (A diagonal 0)', and build_case_bundle.py --check rejects them as 'consumes its own reference flow'. The second hint flow 55a4c166 'Diesel' (the one TianGong's own KR-2011 biopile excavation/backfill/hard … | VERIFIER: ACCEPT the declared cut-off. Independently reproduced every claim: no diesel (or gas-oil / light-fuel-oil / transport-service) flow in the snapshot has a usable producer; the 3 nominal producers of 1cda7c03 are input-referenced combustion coefficient sets that would zero the A diagonal and trip the bundle checker; refinery, CEEIO, crude-extraction and biodiesel datasets are not acceptable proxies; the 0.84 kg/L and 2.68 kg CO2/L factors are physically correct (IPCC 2006 / EN 590). Only a minor w"
+    },
+    {
+     "where": "Biopile/excavation",
+     "item": "diesel_machinery",
+     "flow": null,
+     "amount": 515,
+     "unit": "L",
+     "why": "Declared cut-off: the frozen TianGong snapshot has no dataset whose reference OUTPUT is diesel (or any gas-oil/light-fuel-oil equivalent), and no 'diesel burned in machinery' service. The hint flow 1cda7c03 'Diesel' shows 3 producers, but all three (1cc17669 grain drying, 585f29f8 paint furnace, 7eac9761 chamber furnace; NESPS2 CN 2019) are pollution-census coefficient sets whose reference exchange is a 1000 kg diesel INPUT with NOx/PM/SO2 outputs only (NOx ~3 g/kg, SO2 = 0, no CO2) and an unlinked 'Exhaust gas' product output. reference/lca_matrix.py (line ~125) only places ref exchanges with dir=='out' on the diagonal, so linking to any of them raises 'columns without reference output (A diagonal 0)', and build_case_bundle.py --check rejects them as 'consumes its own reference flow'. The second hint flow 55a4c166 'Diesel' (the one TianGong's own KR-2011 biopile excavation/backfill/hard … | VERIFIER: ACCEPT the declared cut-off. Independently reproduced every claim: no diesel (or gas-oil / light-fuel-oil / transport-service) flow in the snapshot has a usable producer; the 3 nominal producers of 1cda7c03 are input-referenced combustion coefficient sets that would zero the A diagonal and trip the bundle checker; refinery, CEEIO, crude-extraction and biodiesel datasets are not acceptable proxies; the 0.84 kg/L and 2.68 kg CO2/L factors are physically correct (IPCC 2006 / EN 590). Only a minor w"
+    },
+    {
+     "where": "Biopile/preparation",
+     "item": "diesel_machinery",
+     "flow": null,
+     "amount": 16,
+     "unit": "L",
+     "why": "Declared cut-off: the frozen TianGong snapshot has no dataset whose reference OUTPUT is diesel (or any gas-oil/light-fuel-oil equivalent), and no 'diesel burned in machinery' service. The hint flow 1cda7c03 'Diesel' shows 3 producers, but all three (1cc17669 grain drying, 585f29f8 paint furnace, 7eac9761 chamber furnace; NESPS2 CN 2019) are pollution-census coefficient sets whose reference exchange is a 1000 kg diesel INPUT with NOx/PM/SO2 outputs only (NOx ~3 g/kg, SO2 = 0, no CO2) and an unlinked 'Exhaust gas' product output. reference/lca_matrix.py (line ~125) only places ref exchanges with dir=='out' on the diagonal, so linking to any of them raises 'columns without reference output (A diagonal 0)', and build_case_bundle.py --check rejects them as 'consumes its own reference flow'. The second hint flow 55a4c166 'Diesel' (the one TianGong's own KR-2011 biopile excavation/backfill/hard … | VERIFIER: ACCEPT the declared cut-off. Independently reproduced every claim: no diesel (or gas-oil / light-fuel-oil / transport-service) flow in the snapshot has a usable producer; the 3 nominal producers of 1cda7c03 are input-referenced combustion coefficient sets that would zero the A diagonal and trip the bundle checker; refinery, CEEIO, crude-extraction and biodiesel datasets are not acceptable proxies; the 0.84 kg/L and 2.68 kg CO2/L factors are physically correct (IPCC 2006 / EN 590). Only a minor w"
+    },
+    {
+     "where": "Biopile/operation",
+     "item": "microorganism",
+     "flow": null,
+     "amount": 4777,
+     "unit": "L",
+     "why": "Keep the cut-off. TianGong does contain a semantically exact flow, 'Microorganism' (725a2539-3594-448f-b0be-9c80402c594f, kg), with one producer: 'Soil Remediation; Bioreactor; Microbial Cultures; Microorganisms Cultured in the Laboratory' (eeaf8532-887c-4bc6-b689-8b47cece06c5, IT 2018, D'Imporzano et al. 2019). It is a lab starter-culture dataset: 777.6 MJ electricity (linked, 34 producers) and 2 kg 'methane' per 0.001 kg of microorganism, where the methane is coded as an INPUT of an emissions-to-water flow (no LCIA method in the snapshot characterises it in that direction). Its 0.001 kg is a nominal per-project quantity (the companion IT operation process consumes exactly 0.001 kg for a whole project), so it cannot be scaled by mass: 4,777 L at ~1 kg/L would pull in 3.7e9 MJ of electricity (16,000x the entire biopile operation, 229,320 MJ) and even the KR curators' 4.777 kg pulls in 3. … | VERIFIER: ACCEPTED. The mapper's cut-off decision is correct and every quantitative claim was reproduced from the snapshot: flow 725a2539 exists (Product flow, kg) with one producer eeaf8532 whose ref_flow matches and which does not self-consume; its 0.001 kg reference is a nominal lab batch (777.6 MJ electricity per batch), so mass-linking 4,777 kg (3.7e9 MJ) or TianGong's own mis-transcribed 4.777 kg (3.7e6 MJ) would dwarf the whole biopile operation (229,320 MJ) and invert the paper's conclusion. No be"
+    },
+    {
+     "where": "Biopile/backfill",
+     "item": "diesel_machinery",
+     "flow": null,
+     "amount": 288,
+     "unit": "L",
+     "why": "Declared cut-off: the frozen TianGong snapshot has no dataset whose reference OUTPUT is diesel (or any gas-oil/light-fuel-oil equivalent), and no 'diesel burned in machinery' service. The hint flow 1cda7c03 'Diesel' shows 3 producers, but all three (1cc17669 grain drying, 585f29f8 paint furnace, 7eac9761 chamber furnace; NESPS2 CN 2019) are pollution-census coefficient sets whose reference exchange is a 1000 kg diesel INPUT with NOx/PM/SO2 outputs only (NOx ~3 g/kg, SO2 = 0, no CO2) and an unlinked 'Exhaust gas' product output. reference/lca_matrix.py (line ~125) only places ref exchanges with dir=='out' on the diagonal, so linking to any of them raises 'columns without reference output (A diagonal 0)', and build_case_bundle.py --check rejects them as 'consumes its own reference flow'. The second hint flow 55a4c166 'Diesel' (the one TianGong's own KR-2011 biopile excavation/backfill/hard … | VERIFIER: ACCEPT the declared cut-off. Independently reproduced every claim: no diesel (or gas-oil / light-fuel-oil / transport-service) flow in the snapshot has a usable producer; the 3 nominal producers of 1cda7c03 are input-referenced combustion coefficient sets that would zero the A diagonal and trip the bundle checker; refinery, CEEIO, crude-extraction and biodiesel datasets are not acceptable proxies; the 0.84 kg/L and 2.68 kg CO2/L factors are physically correct (IPCC 2006 / EN 590). Only a minor w"
+    },
+    {
+     "where": "Biopile/backfill",
+     "item": "diesel_machinery",
+     "flow": null,
+     "amount": 515,
+     "unit": "L",
+     "why": "Declared cut-off: the frozen TianGong snapshot has no dataset whose reference OUTPUT is diesel (or any gas-oil/light-fuel-oil equivalent), and no 'diesel burned in machinery' service. The hint flow 1cda7c03 'Diesel' shows 3 producers, but all three (1cc17669 grain drying, 585f29f8 paint furnace, 7eac9761 chamber furnace; NESPS2 CN 2019) are pollution-census coefficient sets whose reference exchange is a 1000 kg diesel INPUT with NOx/PM/SO2 outputs only (NOx ~3 g/kg, SO2 = 0, no CO2) and an unlinked 'Exhaust gas' product output. reference/lca_matrix.py (line ~125) only places ref exchanges with dir=='out' on the diagonal, so linking to any of them raises 'columns without reference output (A diagonal 0)', and build_case_bundle.py --check rejects them as 'consumes its own reference flow'. The second hint flow 55a4c166 'Diesel' (the one TianGong's own KR-2011 biopile excavation/backfill/hard … | VERIFIER: ACCEPT the declared cut-off. Independently reproduced every claim: no diesel (or gas-oil / light-fuel-oil / transport-service) flow in the snapshot has a usable producer; the 3 nominal producers of 1cda7c03 are input-referenced combustion coefficient sets that would zero the A diagonal and trip the bundle checker; refinery, CEEIO, crude-extraction and biodiesel datasets are not acceptable proxies; the 0.84 kg/L and 2.68 kg CO2/L factors are physically correct (IPCC 2006 / EN 590). Only a minor w"
+    }
+   ],
+   "n_processes_solved": 178
+  }
+ },
+ "identities": [
+  "sum_process_equals_total",
+  "sum_stage_equals_total"
+ ]
 }

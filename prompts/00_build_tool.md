@@ -15,7 +15,8 @@ A **single-page web tool** (`web/index.html` + `web/lca_core.js`, vanilla JavaSc
 3. See the result for all 25 impact categories in a table (value, unit), plus a **bar chart** for one selected category.
 4. See **contribution analysis** for the selected category: by foreground stage (stacked bar or table), by process (top 10),
    by elementary flow (top 10). Column sums must equal the total.
-5. See the **cut-off list** (product inputs with no provider, with amounts) and the **provider log** (every automatic provider choice).
+5. See the **cut-off list** (product inputs with no provider, with amounts), the **provider log** (every choice made among several
+   candidates), the **add-ons** applied, the **uncharacterised flows** (linked but no factor in any method) and the **data warnings**.
 6. Compare SVE vs Biopile side by side for the selected category.
 7. Export the results table as CSV.
 8. An "Explain" panel that prints the technology matrix **A** restricted to the foreground stages and their direct providers
@@ -28,7 +29,9 @@ A **single-page web tool** (`web/index.html` + `web/lca_core.js`, vanilla JavaSc
 - Implement a dense linear solver yourself (Gaussian elimination with partial pivoting) — the system is at most a few hundred columns.
   No linear-algebra dependency.
 - Optional: Chart.js from a CDN for charts, with a plain-table fallback if the CDN is unreachable.
-- Follow the conventions in `AGENTS.md` exactly: sign of A, direction-aware Q, provider resolution order, cut-off handling.
+- Follow the conventions in `AGENTS.md` exactly: sign of A, direction-aware Q built from the three-element (generic) factor rows only,
+  provider resolution order, cut-off handling, exact-duplicate collapse, add-ons booked on the stage column, IO self-consumption
+  netted on the diagonal, flows with `type: null` treated as unlinked.
 - Must open from `file://` (so use `fetch` with a fallback to an inlined `<script type="application/json">` copy of the bundle if `fetch` fails on `file://`).
 - Readable on a laptop and a phone. No login, no network calls other than the optional CDN.
 

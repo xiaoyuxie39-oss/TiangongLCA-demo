@@ -1,0 +1,26 @@
+method,value,unit
+Acidification,199.1452652375857,mol H+ equivalents
+Climate change,92800.51965579714,kg CO2 Equivalents
+Climate change-Biogenic,0.0,kg CO2-Equivalents
+Climate change-Fossil,92800.51965579714,kg CO2 Equivalents
+Climate change-Land use and land use change,0.0,kg CO2-Equivalents
+"Ecotoxicity, freshwater",10.349236014914935,CTUe
+"Ecotoxicity, freshwater_inorganics",9.561581458251904,CTUe
+"Ecotoxicity, freshwater_organics",0.7876545566630282,CTUe
+EF-particulate Matter,0.0015504617033915689,disease incidence
+Eutrophication marine,57.82609466597073,kg N equivalents
+"Eutrophication, freshwater",0.0,kg P equivalents
+"Eutrophication, terrestrial",633.3499299189423,mol N equivalents
+"Human toxicity, cancer",2.4824626951751957e-08, CTUh 
+"Human toxicity, cancer_inorganics",1.0794135389934994e-08, CTUh 
+"Human toxicity, cancer_organics",1.4030491561816961e-08, CTUh 
+"Human toxicity, non-cancer",1.127910276537019e-06,CTUh
+"Human toxicity, non-cancer_inorganics",9.582003645618309e-07,CTUh
+"Human toxicity, non-cancer_organics",1.6970991197518794e-07,CTUh
+"Ionising radiation, human health",0.0,kBq U235 equivalents
+Land use,0.2493432,dimensionless (pt)
+Ozone depletion,0.0,kg CFC11 equivalents
+Photochemical ozone formation - human health,168.47497600412515,kg NMVOC equivalents
+"Resource use, fossils",1110.5144682708817,MJ
+"Resource use, minerals and metals",0.0,kg Sb equivalents
+Water use,34319.00578209465,m3-world equivalents

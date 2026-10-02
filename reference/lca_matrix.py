@@ -6,12 +6,21 @@ Conventions (docs/01_matrix_method.md, AGENTS.md):
     a synthetic system column consumes 1 of each stage; demand f = 1 unit of the system column;
   * A[i, j] = +ref amount on the diagonal, -amount for the product inputs of j linked to provider i;
   * B rows are (elementary flow, direction); Q is direction-aware;
-  * provider resolution: explicit choice > unique producer > same geo > latest year > smallest uuid;
+  * provider resolution: explicit choice > unique producer > most specific geography match (trailing tokens of e.g. ZZ-SD-CN)
+    > more general dataset on ties > latest year > smallest uuid; records with no net output of their reference flow are never providers;
   * product inputs without a provider are cut-offs (reported, not fatal);
-  * per-stage contribution = impact of the demand vector restricted to that stage (exact by linearity).
+  * per-stage contribution = impact of the demand vector restricted to that stage (exact by linearity);
+  * characterisation factors: a factor row is [flow, dir, value] (generic) or [flow, dir, value, location] (regionalised);
+    Q uses the generic row and ignores regionalised rows;
+  * exact duplicate exchange rows (same flow, direction and amount) are collapsed to one (re-import duplicates);
+    rows with the same flow but different amounts are summed and counted in `warnings`;
+  * foreground add-ons: a stage input may carry `addons` — documented direct emissions (B entries on the stage column)
+    or extra product inputs with a provider (A entries), both per printed unit of the input.
 Requires numpy.
 """
 from __future__ import annotations
+
+import collections
 
 import numpy as np
 
@@ -30,6 +39,18 @@ def _ftype(bundle, flow):
     return (bundle["flows"].get(flow) or {}).get("type") or ""
 
 
+def geo_score(consumer_geo, provider_geo):
+    """Number of trailing location tokens shared, e.g. ("ZZ-SD-CN", "SD-CN") -> 2, ("CN", "HUB-CN") -> 1, ("CN", "US") -> 0."""
+    a = [t for t in (consumer_geo or "").upper().split("-") if t][::-1]
+    b = [t for t in (provider_geo or "").upper().split("-") if t][::-1]
+    n = 0
+    for x, y in zip(a, b):
+        if x != y:
+            break
+        n += 1
+    return n
+
+
 def resolve_provider(bundle, flow, consumer_geo, consumer_uuid, overrides, log):
     """Return provider uuid for a product flow, or None (cut-off). Appends to log."""
     if flow in overrides:
@@ -41,12 +62,11 @@ def resolve_provider(bundle, flow, consumer_geo, consumer_uuid, overrides, log):
     if len(cands) == 1:
         log.append({"flow": flow, "consumer": consumer_uuid, "provider": cands[0], "rule": "unique"})
         return cands[0]
-    geo = (consumer_geo or "").split("-")[-1]
     procs = [bundle["processes"][u] for u in cands]
-    same = [p for p in procs if (p.get("geo") or "").split("-")[-1] == geo]
-    rule = "same-geo+latest" if same else "latest"
-    pool = same or procs
-    pool.sort(key=lambda p: (-_year(p), p["uuid"]))
+    best = max(geo_score(consumer_geo, p.get("geo")) for p in procs)
+    pool = [p for p in procs if geo_score(consumer_geo, p.get("geo")) == best]
+    pool.sort(key=lambda p: (len((p.get("geo") or "").split("-")), -_year(p), p["uuid"]))
+    rule = f"geo-match-{best}+general+latest"
     log.append({"flow": flow, "consumer": consumer_uuid, "provider": pool[0]["uuid"], "rule": rule, "n_candidates": len(cands)})
     return pool[0]["uuid"]
 
@@ -71,7 +91,23 @@ class LcaSystem:
         self.cutoffs = []
         self.unlinked_outputs = []
         self.provider_log = []
+        self.warnings = []
+        self.addon_log = []
         self._build()
+
+    @staticmethod
+    def _dedupe(exchanges):
+        """Collapse exact duplicates; return (rows, n_exact_dupes, flows_with_variant_rows)."""
+        seen, rows, dupes, variants = set(), [], 0, collections.Counter()
+        for e in exchanges:
+            key = (e["flow"], e["dir"], float(e["amount"] or 0.0), bool(e.get("ref")))
+            if key in seen:
+                dupes += 1
+                continue
+            seen.add(key)
+            rows.append(e)
+            variants[(e["flow"], e["dir"])] += 1
+        return rows, dupes, [k for k, n in variants.items() if n > 1]
 
     # ---- construction --------------------------------------------------
     def _col(self, cid, kind, label):
@@ -116,10 +152,28 @@ class LcaSystem:
                 if self._col(prov, "process", self.bundle["processes"][prov]["name"]):
                     queue.append(prov)
                 self._a(prov, sid, -float(inp["amount"]))
+            for inp in st["inputs"]:
+                for ad in inp.get("addons") or []:
+                    qty = float(ad["per_printed_unit"]) * float(inp["amount_printed"])
+                    if ad["type"] == "emission":
+                        self._b(ad["flow"], ad.get("dir", "out"), sid, qty)
+                    elif ad["type"] == "input":
+                        prov = ad["provider"]
+                        if prov not in self.bundle["processes"]:
+                            raise KeyError(f"add-on provider {prov} for item {inp['item']} is not in the bundle")
+                        if self._col(prov, "process", self.bundle["processes"][prov]["name"]):
+                            queue.append(prov)
+                        self._a(prov, sid, -qty)
+                    self.addon_log.append({"stage": st["id"], "item": inp["item"], "type": ad["type"], "flow": ad["flow"], "amount": qty, "note": ad.get("note"), "source": ad.get("source")})
         while queue:
             u = queue.pop()
             p = self.bundle["processes"][u]
-            for e in p["exchanges"]:
+            rows, n_dupes, variants = self._dedupe(p["exchanges"])
+            if n_dupes:
+                self.warnings.append({"process": u, "kind": "exact_duplicate_rows", "n": n_dupes})
+            if variants:
+                self.warnings.append({"process": u, "kind": "variant_rows_summed", "flows": [v[0] for v in variants]})
+            for e in rows:
                 flow, amt, d = e["flow"], float(e["amount"] or 0.0), e["dir"]
                 ft = _ftype(self.bundle, flow)
                 if e.get("ref") and d == "out":
@@ -148,7 +202,7 @@ class LcaSystem:
         self.methods = self.bundle["methods"]
         self.Q = np.zeros((len(self.methods), m))
         for k, meth in enumerate(self.methods):
-            fac = {(f[0], f[1]): f[2] for f in meth["factors"]}
+            fac = {(f[0], f[1]): f[2] for f in meth["factors"] if len(f) == 3}  # generic rows only; regionalised rows carry a location
             for key, i in self.elem_rows.items():
                 v = fac.get(key)
                 if v:
@@ -158,7 +212,8 @@ class LcaSystem:
         diag = np.diag(self.A)
         zero = [self.cols[i] for i in np.where(diag == 0)[0]]
         if zero:
-            raise ValueError(f"columns without reference output (A diagonal 0): {zero[:5]}")
+            names = [f"{z[:8]} {self.col_label.get(z, '')[:50]}" for z in zero[:5]]
+            raise ValueError(f"{len(zero)} column(s) without a reference OUTPUT (A diagonal 0); the producers index must exclude input-referenced records: {names}")
 
     # ---- solving -------------------------------------------------------
     def solve(self):
@@ -210,6 +265,12 @@ class LcaSystem:
             flow, d = inv[i]
             labels.append(f"{(self.bundle['flows'].get(flow) or {}).get('name')} [{d}]")
         return labels
+
+    def uncharacterised_rows(self):
+        """Elementary rows with no factor in any method (linked but invisible to LCIA)."""
+        zero = np.where(~np.any(self.Q != 0, axis=0))[0]
+        labels = self.elem_labels()
+        return [{"row": int(i), "flow": labels[i], "g": float(self.g[i])} for i in zero if self.g[i] != 0]
 
     def check_identities(self, rtol=1e-9):
         hp = self.by_process().sum(axis=1)

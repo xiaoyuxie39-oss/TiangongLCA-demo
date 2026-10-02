@@ -78,7 +78,11 @@ dominates biopile. SVE is higher than biopile in all nine categories.
 ## How this repo maps the case to TianGong
 
 - Foreground: `case/foreground_sve.json`, `case/foreground_biopile.json` (the tables above, one JSON object per stage).
-- Background links: `case/provider_choices.json` (TianGong process uuid per input, with unit conversions and alternatives).
+- Background links: `case/provider_choices.json` (TianGong process uuid per input, with unit conversions and alternatives);
+  how each was chosen and what the verifier objected to: `docs/05_provider_mapping_decisions.md`.
+- Reference run (2026-10-02, China 2019 grid, EF 3.1): SVE 92.8 t CO₂-eq vs biopile 45.9 t (ratio 2.0); SVE operation 86.4 t
+  (electricity), GAC 0 because TianGong's activated-carbon records carry no inputs; biopile excavation and backfill 2.2 t each
+  from the diesel combustion add-on. Full table: `reference/out/validation.md`.
 - Expected deviations from the paper, to be discussed rather than hidden: Chinese background instead of ecoinvent/Korean;
   EF 3.1 instead of EDIP 2003; GAC modelled with a TianGong activated-carbon dataset instead of Bayer et al. (2005).
   The *ordering* (SVE ≫ biopile; operation + GAC dominate SVE) is what we expect to reproduce.

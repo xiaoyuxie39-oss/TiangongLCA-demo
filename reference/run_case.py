@@ -67,7 +67,7 @@ def run_system(bundle, name, item_providers):
     # top processes for GWP, for the summary
     k = names.index("Climate change") if "Climate change" in names else 0
     top = np.argsort(-np.abs(by_proc[k]))[:10]
-    res["top_processes_climate"] = [{"column": sys_.cols[j], "label": sys_.col_label[j], "value": float(by_proc[k, j])} for j in top]
+    res["top_processes_climate"] = [{"column": sys_.cols[j], "label": sys_.col_label[sys_.cols[j]], "value": float(by_proc[k, j])} for j in top]
     return res
 
 

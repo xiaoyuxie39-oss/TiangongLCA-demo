@@ -48,8 +48,19 @@ class Snapshot:
         self.by_uuid = {p["uuid"]: p for p in self.processes}
         self.producers = {}
         self.consumers = {}
+        self.ref_is_input = set()   # NESPS2-style records whose reference exchange is an input (treatment coefficients)
+        self.no_net_output = set()  # records that consume at least as much of their reference flow as they produce
         for p in self.processes:
             if p.get("ref_flow"):
+                ref_dirs = {e["dir"] for e in p["exchanges"] if e.get("ref")}
+                if "out" not in ref_dirs:
+                    self.ref_is_input.add(p["uuid"])
+                    continue
+                ref_out = sum(float(e["amount"] or 0) for e in p["exchanges"] if e.get("ref") and e["dir"] == "out")
+                own_in = sum(float(e["amount"] or 0) for e in p["exchanges"] if e["dir"] == "in" and e["flow"] == p["ref_flow"])
+                if own_in >= ref_out:
+                    self.no_net_output.add(p["uuid"])
+                    continue
                 self.producers.setdefault(p["ref_flow"], []).append(p["uuid"])
             for e in p["exchanges"]:
                 if e["dir"] == "in":
@@ -105,7 +116,9 @@ def main(argv):
     if cmd == "stats":
         n_el = sum(1 for f in s.flows.values() if (f.get("type") or "").startswith("Elementary"))
         print(json.dumps({"processes": len(s.processes), "flows": len(s.flows), "elementary_flows": n_el,
-                          "product_flows_with_producer": len(s.producers), "lcia_methods": len(s.methods),
+                          "product_flows_with_producer": len(s.producers), "processes_with_input_reference": len(s.ref_is_input),
+                          "processes_without_net_output": len(s.no_net_output),
+                          "lcia_methods": len(s.methods),
                           "meta": s.meta}, indent=2, ensure_ascii=False))
     elif cmd == "flows":
         ftype = None
