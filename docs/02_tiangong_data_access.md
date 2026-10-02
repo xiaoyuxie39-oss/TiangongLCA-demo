@@ -55,7 +55,7 @@ For the workshop this channel is a *demonstration*, not a dependency: show one M
 
 ## Case-study coverage check (done 2026-10-02)
 
-TianGong already contains **14 unit processes digitised from Jeong & Suh (2011)** (geo `KR`, year 2011, source field cites the DOI):
-6 SVE stages and 8 biopile stages. Their exchanges are *not* linked into a product system, and a few amounts look mistranscribed
+TianGong already contains **13 unit processes digitised from Jeong & Suh (2011)** (geo `KR`, year 2011, source field cites the paper):
+6 SVE stages and 7 biopile stages. Their exchanges are *not* linked into a product system, and a few amounts look mistranscribed
 (e.g. 10,000 vs 1,000 for pre-treated soil). This repo therefore uses the paper's tables as foreground and TianGong only as
 background, and keeps the digitised uuids in `docs/04_case_study_sve_biopile.md` as a data-quality exercise.

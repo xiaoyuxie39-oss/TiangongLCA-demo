@@ -89,7 +89,7 @@ dominates biopile. SVE is higher than biopile in all nine categories.
 
 ## TianGong already has this paper (data-quality exercise)
 
-Fourteen KR-2011 unit processes on the node cite this DOI. SVE: barrier layer `521537b7-28c2-4806-8532-659cd4d25f2a`,
+Thirteen KR-2011 unit processes in the snapshot cite this paper (6 SVE + 7 biopile). SVE: barrier layer `521537b7-28c2-4806-8532-659cd4d25f2a`,
 materials transport `67ed2674-976c-45f5-8933-ee8f220aca1e`, extraction wells `dcf5877b-f79e-464c-bdc5-67cc670f55e0`,
 system assembly (search "SVE system assembly"), operation (`Remediated soil ; … SVE system operation for 2.05 years`),
 exhaust-gas disposal `2f2acd1d-c8ed-4f6d-9a08-324d513c7be3`. Biopile: hardened ground, materials transport, excavation,

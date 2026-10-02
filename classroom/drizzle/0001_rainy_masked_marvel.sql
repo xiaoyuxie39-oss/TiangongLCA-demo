@@ -1,0 +1,1 @@
+ALTER TABLE `groups` ADD `recovery_pin_hash` text;

@@ -7,9 +7,11 @@ The goal is not to get "the answer" from the AI; it is to make the AI explain, a
 > Here is the technology matrix A of a small LCA system (paste the "Explain" panel). Explain what each column and row means,
 > what the sign convention is, and what solving A·s = f gives us. Then tell me which process will run most often and why.
 
-**Card 2 — Why is activated carbon so important?**
-> In this result (paste the by-process contribution table for climate change), activated carbon appears high. Explain the
-> physical reason (how is activated carbon made?) and tell me what data I would need to check before trusting this number.
+**Card 2 — Why is activated carbon zero here?**
+> In the original paper, replacing the granular activated carbon (GAC) was 36 % of SVE's total impact. In my result (paste the
+> by-stage table for climate change) the GAC stage is exactly 0. Explain how activated carbon is made and roughly what its
+> cradle-to-gate carbon footprint should be per kg, then tell me what must be missing from the database record for the stage to
+> come out as zero, and how I could check.
 
 **Card 3 — Is it fair to use Chinese electricity for a Korean site?**
 > The tool uses a Chinese grid mix because the database has no Korean grid. Explain what "geographical representativeness" means in

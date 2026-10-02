@@ -1,0 +1,16 @@
+{
+  "name": "tiangong-classroom",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "catalog": "node scripts/build-catalog.mjs",
+    "db:generate": "drizzle-kit generate",
+    "build:sites": "node scripts/build-sites.mjs",
+    "test": "node --test test/*.test.mjs",
+    "dev:local": "node scripts/dev-server.mjs"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.0",
+    "drizzle-orm": "^0.44.0"
+  }
+}

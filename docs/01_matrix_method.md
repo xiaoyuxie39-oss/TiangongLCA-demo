@@ -31,12 +31,12 @@ H_stage[k, stage] = (Q B A⁻¹ e_stage)[k]               (impact of demanding 1
 H_flow[k, i] = Q[k, i] · g[i]                          (impact k caused by elementary flow i)
 ```
 
-Column sums of `H_process` equal `h`. That identity is the first test.
+Summing `H_process` over the processes j recovers `h` (Σⱼ H_process[k, j] = h[k]). That identity is the first test.
 
 ## Sign and unit conventions used in this repository
 
 - Row i of A is "the reference product of column i". A consumer's product input is linked to one provider column, so A is
-  square even when several processes make the same product (31 provincial electricity mixes). Which provider is chosen is
+  square even when several processes make the same product (30 provincial electricity mixes plus the national average). Which provider is chosen is
   a modelling decision, logged in `provider_log`.
 - Foreground stages are synthetic columns with reference amount 1 whose inputs are the paper's amounts converted to the
   TianGong flow units; a synthetic system column consumes 1 of each stage; the demand is 1 unit of the system column.

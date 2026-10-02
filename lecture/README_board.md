@@ -1,5 +1,9 @@
 # Live results board — how to run it
 
+The primary board is the classroom site, https://tiangong-lca-classroom-2026.xiaoyuxie39.chatgpt.site/ (student submission page,
+facilitator controls and anonymised projected distribution; see [`classroom/README.md`](../classroom/README.md) and the runbook).
+The Google Sheet below remains a quick fallback when the classroom backend is unavailable, and `web/board.html` the offline one.
+
 **Sheet:** https://docs.google.com/spreadsheets/d/1Jo00NyXXPqxO4o_aZ51GcqlzsoaU7YNb2SfOiIqvYWE/edit
 (owner: the instructor's Google account; created from `lecture/results_board_live.csv`).
 

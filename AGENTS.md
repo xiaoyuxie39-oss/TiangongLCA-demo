@@ -103,5 +103,7 @@ per_printed_unit, …}` (an extra product input). Amount = `per_printed_unit × 
 - Do not hand-edit anything under `data/snapshot/` or `web/data/`. Regenerate.
 - Do not commit the paper PDF or anything under `local/`.
 - No secrets, no logins: the public ILCD node is the only remote source.
+- `classroom/` is a separate, optional classroom application. Its student submissions require a backend; its
+  teacher secret is an environment secret, never committed. The offline `web/` calculator retains the rule above.
 - Keep dependencies minimal: Python standard library + numpy for the reference; vanilla JS + optional Chart.js for the web tool.
 - When you change a convention, update `docs/01_matrix_method.md` and this file in the same change.

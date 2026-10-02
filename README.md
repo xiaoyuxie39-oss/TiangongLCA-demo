@@ -43,7 +43,8 @@ Foreground data come from the paper's Tables 2–3; background data come from th
 | `prompts/` | The build prompt used live, follow-up prompts, stretch goals, and student prompt cards |
 | `web/` | The single-page tool generated during the workshop, plus `web/data/case_bundle.json` |
 | `tests/` | Expected results with tolerances; both the reference and the generated tool must reproduce them |
-| `lecture/` | Runbook with timing and fallbacks, student worksheet |
+| `classroom/` | Optional online classroom submission and live aggregate board (ChatGPT Sites deployment) |
+| `lecture/` | Runbook with timing and fallbacks, student worksheet, optional one-page note sent to students before the day |
 
 ## Data and licenses
 
