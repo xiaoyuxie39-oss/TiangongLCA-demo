@@ -28,6 +28,24 @@
 3. When it stops: `node web/test.mjs` → expect PASS. Open `web/index.html`. Change the electricity provider to a hydro-heavy province. Watch SVE drop.
 4. If it fails after one retry (10 min max): `git checkout -- web && open web/index.html` (committed M4 version) and say so. Play the recording later if useful.
 
+## Rehearsal log
+
+| Date | Setup | Result |
+|---|---|---|
+| 2026-10-02 | Fresh clone, `codex exec` (Codex CLI 0.160, model gpt-5.6-sol, medium reasoning), prompt `prompts/00_build_tool.md` verbatim, no human input | **11 min 55 s** to a passing tool: `web/lca_core.js`, `web/test.mjs`, `web/index.html` (embeds a compressed copy of the bundle for `file://`); 505 checks PASS; it also flagged a genuine inconsistency between `AGENTS.md` and the reference (own-product consumption), fixed afterwards |
+| 2026-10-02 | Follow-up: `codex exec resume --last` with a two-sentence change request after the reference fix (own-product netting) | **1 min 59 s**; it changed `lca_core.js`, extended `test.mjs`, refreshed the embedded bundle; 507 checks PASS |
+
+Budget for the live slot: 30 min = 12 min build + 5 min test/open + buffer. If the build passes early, use the time to change a provider live.
+
+## Live results board
+
+- Primary: the Google Sheet "TiangongLCA results board (live)" (link and setup in `lecture/README_board.md`). Columns A–E are typed by students
+  (any browser or phone, no account needed once sharing is set to *anyone with the link can edit*); the block from column H
+  recomputes instantly (counts, min/median/max/mean per system, ratio vs the paper's 6.9, mean per electricity provider with
+  inline bars, latest entries). Project the sheet zoomed to columns H–N.
+- Fallback without internet: `web/board.html` (instructor types rows; stored in the browser; CSV export).
+- Source of the sheet: `lecture/results_board_live.csv` (upload to Google Drive → converts to a Sheet with formulas live).
+
 ## Fallbacks
 
 | Problem | Do this |

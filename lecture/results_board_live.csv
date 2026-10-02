@@ -5,8 +5,8 @@ Group,System (SVE or Biopile),Electricity provider (TianGong),"Climate change, t
 ,,,,,,,SVE,"=COUNTIF($B$2:$B$500,""SVE"")","=IFERROR(MINIFS($D$2:$D$500,$B$2:$B$500,""SVE""),"""")","=IFERROR(MEDIAN(FILTER($D$2:$D$500,$B$2:$B$500=""SVE"")),"""")","=IFERROR(MAXIFS($D$2:$D$500,$B$2:$B$500,""SVE""),"""")","=IFERROR(AVERAGEIF($B$2:$B$500,""SVE"",$D$2:$D$500),"""")",360
 ,,,,,,,Biopile,"=COUNTIF($B$2:$B$500,""Biopile"")","=IFERROR(MINIFS($D$2:$D$500,$B$2:$B$500,""Biopile""),"""")","=IFERROR(MEDIAN(FILTER($D$2:$D$500,$B$2:$B$500=""Biopile"")),"""")","=IFERROR(MAXIFS($D$2:$D$500,$B$2:$B$500,""Biopile""),"""")","=IFERROR(AVERAGEIF($B$2:$B$500,""Biopile"",$D$2:$D$500),"""")",52.1
 ,,,,,,,SVE / Biopile (medians),,,"=IFERROR(ROUND(K5/K6,2),"""")",,,6.9
-,,,,,,,Groups reporting,"=IFERROR(COUNTA(UNIQUE(FILTER($A$2:$A$500,$A$2:$A$500<>""""))),0)"
-,,,,,,,Median bars,"=SPARKLINE(K5:K6,{""charttype"",""column"";""color"",""#B8622E"";""ymin"",0})"
+,,,,,,,Groups reporting,"=IFERROR(COUNTA(UNIQUE(FILTER($A$2:$A$500,LEN($A$2:$A$500)>0))),0)"
+,,,,,,,Median bars,"=IFERROR(SPARKLINE(K5:K6,{""charttype"",""column"";""color"",""#B8622E"";""ymin"",0}),"""")"
 
 ,,,,,,,By electricity provider,SVE mean (t),n,SVE bar,Biopile mean (t),n
 ,,,,,,,China average,"=IFERROR(ROUND(AVERAGEIFS($D$2:$D$500,$B$2:$B$500,""SVE"",$C$2:$C$500,""*""&H12&""*""),1),"""")","=COUNTIFS($B$2:$B$500,""SVE"",$C$2:$C$500,""*""&H12&""*"")","=IF(I12="""","""",SPARKLINE(I12,{""charttype"",""bar"";""max"",MAX($I$12:$I$42);""color1"",""#B8622E""}))","=IFERROR(ROUND(AVERAGEIFS($D$2:$D$500,$B$2:$B$500,""Biopile"",$C$2:$C$500,""*""&H12&""*""),1),"""")","=COUNTIFS($B$2:$B$500,""Biopile"",$C$2:$C$500,""*""&H12&""*"")"
