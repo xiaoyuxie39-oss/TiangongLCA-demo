@@ -6,7 +6,8 @@
 - [ ] Codex CLI (or Claude Code) logged in on the instructor laptop; `node` ≥ 20 installed (for `node web/test.mjs`).
 - [ ] Screen recording of a successful live build saved in `local/` (fallback).
 - [ ] Printed or linked: `lecture/worksheet.md`, `prompts/student_prompt_cards.md`, Pages URL as a QR code.
-- [ ] Ask the host in advance: room Wi-Fi, how many students bring laptops, who already has Codex/Claude Code/ChatGPT.
+- [ ] Ask the host in advance: room Wi-Fi, projector, roughly how many students bring laptops. No preparation is asked of students;
+      anyone with a browser can do Track C, anyone with a chat AI can do Track B, and Track A is for those who already use Codex/Claude Code.
 
 ## Timeline
 

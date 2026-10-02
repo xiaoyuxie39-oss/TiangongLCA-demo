@@ -1,0 +1,9 @@
+[project]
+name = "tiangonglca-demo-reference"
+version = "0.1.0"
+description = "Reference implementation and data tooling for the TiangongLCA-demo workshop"
+requires-python = ">=3.11"
+dependencies = ["numpy>=1.26"]
+
+[tool.uv]
+package = false

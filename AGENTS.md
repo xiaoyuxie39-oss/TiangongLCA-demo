@@ -46,13 +46,15 @@ never edit it by hand.
 
 ## Matrix conventions (must match `docs/01_matrix_method.md`)
 
-- One column per process. One row per *product flow that has a provider* in the system (technology matrix **A**),
-  one row per elementary flow (intervention matrix **B**).
-- A[i, j] = + amount if process j's reference output is product i; − amount for product inputs. Raw amounts, no normalisation.
-- Demand vector **f** is expressed in the reference-flow unit of each foreground stage; solve A s = f with a dense solver
-  (systems in this repo are a few hundred processes at most).
+- One column per process; **row i is "the reference product of column i"**, so **A** is square by construction and a
+  consumer links to one specific provider column. One row per (elementary flow, direction) in **B**.
+- Foreground stages are synthetic columns (reference amount 1) whose inputs are the converted amounts of TianGong product
+  flows; a synthetic system column consumes 1 of each stage. Demand **f** = 1 unit of the system column.
+- A[i, i] = + reference amount of column i; A[i, j] = − amount of product i consumed by column j. Raw amounts, no normalisation.
+  Solve A s = f with a dense solver (a few hundred to ~1,000 columns).
 - Inventory g = B s. Impacts h = Q g, where Q[k, i] is the factor of method k for elementary flow i (direction-aware).
-- Contribution analysis: per-process h_kj = Σ_i Q[k,i] B[i,j] s_j; per-stage = sum over the processes tagged with that stage; per-flow = Q[k,i] g_i.
+- Contribution analysis: per-process h_kj = Σ_i Q[k,i] B[i,j] s_j; **per-stage = impacts of the demand vector restricted to
+  that stage column** (exact, by linearity: Σ_stage = total); per-flow = Q[k,i] g_i.
 - **Provider resolution:** a product-flow input is linked to the provider named in `case/provider_choices.json` if present;
   otherwise to the unique process whose `ref_flow` equals the flow; if several qualify, prefer the same `geo`
   as the consumer, then the most recent `year`, then the first by uuid, and **record the choice**.

@@ -1,0 +1,11 @@
+{
+  "source": "https://lcdn.tiangong.earth/resource",
+  "crawled_at": "2026-10-02T08:26:52+00:00",
+  "counts": {
+    "processes": 4091,
+    "flows": 96820,
+    "lcia_methods": 25
+  },
+  "failed_processes": [],
+  "license": "TianGong open data, MIT (https://github.com/tiangong-lca/data)"
+}

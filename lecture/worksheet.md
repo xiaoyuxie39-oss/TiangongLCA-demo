@@ -26,4 +26,5 @@ Record your answers; we collect the numbers on the board at the end.
 
 ## Hand in
 
-Numbers for 1, 4 and 8 on the board; the rest as a short note (half a page) by the end of the week.
+Nothing to prepare before class and nothing to submit afterwards: put your numbers for 1, 4 and 8 on the shared board
+during the session; we discuss them together in the last 15 minutes.

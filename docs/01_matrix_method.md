@@ -7,7 +7,7 @@ of Life Cycle Assessment*, 2002). We implement the smallest honest version of it
 
 | Symbol | Shape | Meaning |
 |---|---|---|
-| **A** | n_products × n_processes | Technology matrix. Column j describes process j: + for its reference product output, − for product inputs. |
+| **A** | n_processes × n_processes | Technology matrix. Column j describes process j: + its reference product on the diagonal, − its product inputs in the rows of the providers it is linked to. Square by construction. |
 | **B** | n_elementary × n_processes | Intervention matrix. Emissions (outputs) and resource extractions (inputs) of each process. |
 | **f** | n_products | Final demand (the functional unit), e.g. 1 "Remediated soil, SVE" = 1,000 m³. |
 | **s** | n_processes | Scaling vector: how many times each process must run. |
@@ -27,13 +27,19 @@ Contribution analysis is just "do not sum yet":
 
 ```
 H_process[k, j] = Σ_i Q[k, i] · B[i, j] · s[j]        (impact k caused by process j)
-H_stage[k, stage] = Σ_{j ∈ stage} H_process[k, j]      (foreground stages carry a tag; background processes inherit the tag of the stage that pulled them in, or are reported as "background")
+H_stage[k, stage] = (Q B A⁻¹ e_stage)[k]               (impact of demanding 1 unit of that stage alone; exact because the solution is linear in f, so Σ_stage H_stage = h)
 H_flow[k, i] = Q[k, i] · g[i]                          (impact k caused by elementary flow i)
 ```
 
 Column sums of `H_process` equal `h`. That identity is the first test.
 
 ## Sign and unit conventions used in this repository
+
+- Row i of A is "the reference product of column i". A consumer's product input is linked to one provider column, so A is
+  square even when several processes make the same product (31 provincial electricity mixes). Which provider is chosen is
+  a modelling decision, logged in `provider_log`.
+- Foreground stages are synthetic columns with reference amount 1 whose inputs are the paper's amounts converted to the
+  TianGong flow units; a synthetic system column consumes 1 of each stage; the demand is 1 unit of the system column.
 
 - Amounts are taken **as stored** in TianGong (reference unit of the flow; electricity is in MJ).
 - A[i, j] = +amount for the reference output of process j; A[i, j] = −amount for each product input i of process j.

@@ -15,7 +15,7 @@ Foreground data come from the paper's Tables 2–3; background data come from th
 2. **Live build (30 min)** – the instructor runs [`prompts/00_build_tool.md`](prompts/00_build_tool.md)
    in Codex (or Claude Code). The agent generates a single-page HTML calculator from the spec and
    checks itself against [`tests/expected_results.json`](tests/expected_results.json).
-3. **Hands-on (60–75 min)** – everyone uses the same web tool, in one of three tracks
+3. **Hands-on (60–75 min)** – no preparation is required of students; everyone uses the same web tool, in one of three tracks
    (see [`lecture/worksheet.md`](lecture/worksheet.md)):
    - **Track A – build it yourself.** You have Codex / Claude Code installed. Start from the prompt, then do a stretch goal.
    - **Track B – prompt cards.** You use any chat AI (ChatGPT, Claude, Gemini…). Use the ready-made
