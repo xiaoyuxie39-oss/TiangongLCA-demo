@@ -11,7 +11,7 @@ function renderEntries(rows) {
   const tbody = $('entries'); tbody.replaceChildren();
   for (const row of rows) {
     const tr = document.createElement('tr');
-    for (const value of [row.label, row.baseline_sve_t, row.baseline_biopile_t, row.provider_uuid, row.changed_sve_t, row.changed_biopile_t, row.gac_reason, row.cutoff_choice, row.explanation, row.revision]) tr.append(node('td', String(value ?? '')));
+    for (const value of [row.label, row.baseline_sve_t, row.baseline_biopile_t, row.provider_name || row.provider_uuid, row.changed_sve_t, row.changed_biopile_t, row.gac_reason, row.cutoff_choice, row.explanation, row.revision]) tr.append(node('td', String(value ?? '')));
     tbody.append(tr);
   }
   if (!rows.length) { const tr = document.createElement('tr'); tr.append(node('td', 'No submissions yet')); tbody.append(tr); }

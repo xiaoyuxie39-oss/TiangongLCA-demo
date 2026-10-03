@@ -51,11 +51,11 @@ function renderResults(data) {
     if (item.median_delta_sve_t === null) providers.append(node('p', 'muted', `${label}: n=${item.n}; fewer than 3 groups, so the median is hidden`));
     else {
       providers.append(row(`${label} · n=${item.n}`, Math.abs(item.median_delta_sve_t), max, 'sve'));
-      providers.append(node('p', 'muted', `Median change ${item.median_delta_sve_t >= 0 ? '+' : ''}${fmt(item.median_delta_sve_t)} t · Process ${item.uuid}`));
+      providers.append(node('p', 'muted', `Median change ${item.median_delta_sve_t >= 0 ? '+' : ''}${fmt(item.median_delta_sve_t)} t · ${item.geo} grid mix ${item.year}`));
     }
   }
   interpretation.append(providers, votes('Why is the GAC stage near zero?', result.votes.gac, gacNames), votes('Which cut-off should be checked first?', result.votes.cutoff, cutoffNames));
-  $('provenance').textContent = `Revealed ${result.n} groups · Snapshot ${data.catalog.snapshot} · Method UUID ${data.catalog.method_uuid} · Electricity flow UUID ${data.catalog.flow_uuid}`;
+  $('provenance').textContent = `Revealed ${result.n} groups · TianGong snapshot of ${String(data.catalog.snapshot).slice(0, 10)} · EF 3.1 ${data.catalog.method_name}`;
   $('results-card').classList.remove('hidden');
 }
 async function refresh() {

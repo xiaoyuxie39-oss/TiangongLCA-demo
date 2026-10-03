@@ -2,16 +2,20 @@
 """Build web/data/case_bundle.json from the foreground files, provider choices and the snapshot.
 
     python3 reference/build_case_bundle.py --check   # validate case/provider_choices.json against the snapshot, no output file
-    python3 reference/build_case_bundle.py           # write web/data/case_bundle.json
+    python3 reference/build_case_bundle.py           # write web/data/case_bundle.json and refresh the copy inlined in web/index.html
 
 Provider resolution (AGENTS.md): explicit choice > unique producer > same geo as consumer > latest year > smallest uuid.
 Unresolvable product inputs are cut-offs (logged, never fatal). Add-ons (documented direct emissions or extra inputs per
-printed unit) are carried into the bundle. Standard library only.
+printed unit) are carried into the bundle. web/index.html carries a gzip/base64 copy of the bundle for file:// use;
+it is rewritten here so the two never drift (web/test.mjs checks it). Standard library only.
 """
+import base64
 import collections
+import gzip
 import hashlib
 import json
 import pathlib
+import re
 import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
@@ -20,6 +24,8 @@ from snapshot import Snapshot  # noqa: E402
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 CASE = ROOT / "case"
 OUT = ROOT / "web" / "data" / "case_bundle.json"
+PAGE = ROOT / "web" / "index.html"
+INLINE = re.compile(r'(<script id="case-bundle-inline" type="application/json" data-encoding="gzip-base64">)[^<]*(</script>)')
 SYSTEMS = {"SVE": "foreground_sve.json", "Biopile": "foreground_biopile.json"}
 
 
@@ -95,6 +101,8 @@ def check(s, choices, systems):
         c = choices.get(item)
         if not c:
             problems.append(f"{item}: no entry in provider_choices.json"); continue
+        if not c.get("label") or not c.get("why_short"):
+            problems.append(f"{item}: label / why_short missing (the student view prints them)")
         check_addons(s, item, c, problems)
         if c.get("cutoff"):
             tag = f"+{len(c['addons'])} add-on " if c.get("addons") else ""
@@ -162,7 +170,7 @@ def build(s, choices, systems):
             stage = {"id": st["id"], "name": st["name"], "note": st.get("note"), "inputs": []}
             for inp in st["inputs"]:
                 c = choices[inp["item"]]
-                rec = {"item": inp["item"], "amount_printed": inp["amount"], "unit_printed": inp["unit"], "note": inp.get("note")}
+                rec = {"item": inp["item"], "label": c.get("label"), "amount_printed": inp["amount"], "unit_printed": inp["unit"], "note": inp.get("note")}
                 if c.get("addons"):
                     rec["addons"] = c["addons"]
                     for ad in c["addons"]:
@@ -170,7 +178,7 @@ def build(s, choices, systems):
                         if ad["type"] == "input":
                             include(ad["provider"])
                 if c.get("cutoff"):
-                    rec.update({"cutoff": True, "why": c.get("why")})
+                    rec.update({"cutoff": True, "why": c.get("why"), "why_short": c.get("why_short")})
                     cutoffs.append({"system": name, "stage": st["id"], **rec})
                 else:
                     factor = (c.get("convert") or {}).get("factor", 1)
@@ -201,7 +209,8 @@ def build(s, choices, systems):
             else:
                 include(prov)
 
-    flows = {u: (s.flows.get(u) or {"name": None, "type": None, "category": None, "prop": None, "unit": None}) for u in bundle_flows}
+    # sorted: set order follows Python's per-run string hashing, and the bundle must rebuild byte-identically
+    flows = {u: (s.flows.get(u) or {"name": None, "type": None, "category": None, "prop": None, "unit": None}) for u in sorted(bundle_flows)}
     methods = []
     for m in s.methods:
         fac = [f for f in m["factors"] if f[0] in flows]
@@ -223,9 +232,9 @@ def build(s, choices, systems):
                  "counts": {"processes": len(bundle_procs), "flows": len(flows), "methods": len(methods),
                             "resolution_log": len(log), "cutoffs": len(cutoffs), "warnings": len(warnings)}},
         "systems": resolved_systems,
-        "provider_choices": {k: {"flow": v.get("flow"), "default_provider": v.get("default_provider"),
+        "provider_choices": {k: {"label": v.get("label"), "flow": v.get("flow"), "default_provider": v.get("default_provider"),
                                  "alternatives": v.get("alternatives") or [], "cutoff": bool(v.get("cutoff")),
-                                 "confidence": v.get("confidence"), "why": v.get("why")}
+                                 "confidence": v.get("confidence"), "why_short": v.get("why_short"), "why": v.get("why")}
                              for k, v in choices.items() if not k.startswith("_")},
         "background_overrides": overrides,
         "processes": {u: {k: p.get(k) for k in ("uuid", "name", "name_zh", "geo", "year", "type", "classification", "ref_flow", "exchanges", "sources")}
@@ -258,6 +267,14 @@ def main():
     OUT.write_text(text)
     sha = hashlib.sha256(text.encode()).hexdigest()
     print(f"\nwrote {OUT.relative_to(ROOT)}  {len(text) / 1e6:.2f} MB  sha256={sha[:16]}…")
+    page = PAGE.read_text()
+    inline = base64.b64encode(gzip.compress(text.encode(), mtime=0)).decode()
+    page, n = INLINE.subn(lambda m: m.group(1) + inline + m.group(2), page)
+    if n == 1:
+        PAGE.write_text(page)
+        print(f"refreshed the inline copy in {PAGE.relative_to(ROOT)} ({len(inline) / 1e6:.2f} MB base64)")
+    else:
+        print(f"note: no inline bundle tag in {PAGE.relative_to(ROOT)}; file:// use needs one")
     print(json.dumps(bundle["meta"]["counts"]))
     bg = [c for c in bundle["cutoffs"] if c["system"] == "background"]
     print(f"foreground cut-offs: {len(bundle['cutoffs']) - len(bg)}; background cut-offs: {len(bg)}; processes with duplicate rows: {len(bundle['warnings'])}")

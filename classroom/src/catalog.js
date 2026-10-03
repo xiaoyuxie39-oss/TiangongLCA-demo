@@ -12,15 +12,21 @@ export const catalog = {
       "year": 2019
     },
     {
-      "uuid": "a976ee9d-b890-4bc1-93d2-e649a723dd46",
-      "name": "Electricity production ; Electricity mix ; Guangdong",
-      "geo": "GD-CN",
+      "uuid": "bf4cea5b-6acf-435f-a8a6-50d54d0bb13a",
+      "name": "Electricity production ; Electricity mix ; Anhui",
+      "geo": "AH-CN",
       "year": 2019
     },
     {
-      "uuid": "ed589f98-d6b7-42cf-89a4-19cb63e72ea2",
-      "name": "Electricity production ; Electricity mix ; Zhejiang",
-      "geo": "ZJ-CN",
+      "uuid": "7ab2aa31-91ff-4843-9e65-56865e6836a0",
+      "name": "Electricity production ; Electricity mix ; Beijing",
+      "geo": "BJ-CN",
+      "year": 2019
+    },
+    {
+      "uuid": "27c56fab-ed64-4eb5-ba6e-37b9310fa0ec",
+      "name": "Electricity production ; Electricity mix ; Chongqing",
+      "geo": "CQ-CN",
       "year": 2019
     },
     {
@@ -30,15 +36,159 @@ export const catalog = {
       "year": 2019
     },
     {
-      "uuid": "30558cec-4718-4eac-a400-85e45a276e73",
-      "name": "Electricity production ; Electricity mix ; Sichuan",
-      "geo": "SC-CN",
+      "uuid": "290f82db-1a3e-4eb9-8d33-c807a407671b",
+      "name": "Electricity production ; Electricity mix ; Gansu",
+      "geo": "GS-CN",
+      "year": 2019
+    },
+    {
+      "uuid": "a976ee9d-b890-4bc1-93d2-e649a723dd46",
+      "name": "Electricity production ; Electricity mix ; Guangdong",
+      "geo": "GD-CN",
+      "year": 2019
+    },
+    {
+      "uuid": "dda8e0f7-7ae6-4514-911e-66f7fc09da08",
+      "name": "Electricity production ; Electricity mix ; Guangxi",
+      "geo": "GX-CN",
+      "year": 2019
+    },
+    {
+      "uuid": "91135241-e3dc-4e8e-ad1c-39f3d5b274ca",
+      "name": "Electricity production ; Electricity mix ; Guizhou",
+      "geo": "GZ-CN",
+      "year": 2019
+    },
+    {
+      "uuid": "7498a604-855b-4cce-8741-43b150d01f50",
+      "name": "Electricity production ; Electricity mix ; Hainan",
+      "geo": "HAIN-CN",
+      "year": 2019
+    },
+    {
+      "uuid": "cd5ceee9-8278-4d0e-859f-0bac58a4e892",
+      "name": "Electricity production ; Electricity mix ; Hebei",
+      "geo": "HEB-CN",
+      "year": 2019
+    },
+    {
+      "uuid": "6addcb55-ad9e-4cdd-a18e-fcaeb1df3dac",
+      "name": "Electricity production ; Electricity mix ; Heilongjiang",
+      "geo": "HLJ-CN",
+      "year": 2019
+    },
+    {
+      "uuid": "e145500a-b014-467b-8722-12dc418fd350",
+      "name": "Electricity production ; Electricity mix ; Henan",
+      "geo": "HEN-CN",
+      "year": 2019
+    },
+    {
+      "uuid": "012fc8f6-9a30-4d98-9b03-34ddec3a6f10",
+      "name": "Electricity production ; Electricity mix ; Hubei",
+      "geo": "HUB-CN",
+      "year": 2019
+    },
+    {
+      "uuid": "f56d508b-142f-47ec-9a2d-2a6c552bf198",
+      "name": "Electricity production ; Electricity mix ; Hunan",
+      "geo": "HUN-CN",
       "year": 2019
     },
     {
       "uuid": "1dbf3ef8-4cb4-4f82-9e0b-729040422300",
       "name": "Electricity production ; Electricity mix ; Inner Mongolia",
       "geo": "NMG-CN",
+      "year": 2019
+    },
+    {
+      "uuid": "03ae7e51-0820-4c7c-82aa-785c1fe2afd8",
+      "name": "Electricity production ; Electricity mix ; Jiangsu",
+      "geo": "JS-CN",
+      "year": 2019
+    },
+    {
+      "uuid": "3b85f2d2-ca7a-40a8-b576-acb1028efce0",
+      "name": "Electricity production ; Electricity mix ; Jiangxi",
+      "geo": "JX-CN",
+      "year": 2019
+    },
+    {
+      "uuid": "a28114a8-a847-4d8c-a769-0737a7fbfe41",
+      "name": "Electricity production ; Electricity mix ; Jilin",
+      "geo": "JL-CN",
+      "year": 2019
+    },
+    {
+      "uuid": "2ac1a908-c865-410c-a0cd-d32daad8e4d0",
+      "name": "Electricity production ; Electricity mix ; Liaoning",
+      "geo": "LN-CN",
+      "year": 2019
+    },
+    {
+      "uuid": "47f15b19-bb39-4bab-8219-8bb785c6ffac",
+      "name": "Electricity production ; Electricity mix ; Ningxia",
+      "geo": "NX-CN",
+      "year": 2019
+    },
+    {
+      "uuid": "7378a291-a587-48b7-bf9d-472af1ae6f97",
+      "name": "Electricity production ; Electricity mix ; Qinghai",
+      "geo": "QH-CN",
+      "year": 2019
+    },
+    {
+      "uuid": "0277e7da-78c5-456d-b902-39a6aabd52fe",
+      "name": "Electricity production ; Electricity mix ; Shaanxi",
+      "geo": "SAX-CN",
+      "year": 2019
+    },
+    {
+      "uuid": "b97165f2-147c-46d5-8491-e3c3956bce94",
+      "name": "Electricity production ; Electricity mix ; Shandong",
+      "geo": "SD-CN",
+      "year": 2019
+    },
+    {
+      "uuid": "b0861536-a1a7-4a3d-af05-1c9cb0aff4fc",
+      "name": "Electricity production ; Electricity mix ; Shanghai",
+      "geo": "SH-CN",
+      "year": 2019
+    },
+    {
+      "uuid": "33667725-4222-432b-a39c-70fdfcf1f1a6",
+      "name": "Electricity production ; Electricity mix ; Shanxi",
+      "geo": "SX-CN",
+      "year": 2019
+    },
+    {
+      "uuid": "30558cec-4718-4eac-a400-85e45a276e73",
+      "name": "Electricity production ; Electricity mix ; Sichuan",
+      "geo": "SC-CN",
+      "year": 2019
+    },
+    {
+      "uuid": "333ed710-0d97-4780-8591-9bd0ab2d249b",
+      "name": "Electricity production ; Electricity mix ; Tianjin",
+      "geo": "TJ-CN",
+      "year": 2019
+    },
+    {
+      "uuid": "41c3a751-2b91-44eb-b61a-6c58c251ca80",
+      "name": "Electricity production ; Electricity mix ; Xinjiang",
+      "geo": "XJ-CN",
+      "year": 2019
+    },
+    {
+      "uuid": "425aef67-d122-4c04-b91c-96ccd3a11ae7",
+      "name": "Electricity production ; Electricity mix ; Yunnan",
+      "geo": "YN-CN",
+      "year": 2019
+    },
+    {
+      "uuid": "ed589f98-d6b7-42cf-89a4-19cb63e72ea2",
+      "name": "Electricity production ; Electricity mix ; Zhejiang",
+      "geo": "ZJ-CN",
       "year": 2019
     }
   ]

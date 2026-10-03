@@ -5,6 +5,8 @@
 - `provider_choices.json`: one entry per `item`. It says which TianGong flow the item is, how to convert the printed unit into the
   flow's reference unit, which TianGong process supplies it by default, and which alternatives are worth trying.
   Items that cannot be linked are declared `"cutoff": true` with a reason — they still appear in the tool's cut-off list.
+  Every entry also has `label` (the name students see) and `why_short` (the one-sentence reason the tool prints); both are
+  written in `case/mapping/assemble.py`, which regenerates this file, so edit them there.
 
 Schema of a provider entry:
 

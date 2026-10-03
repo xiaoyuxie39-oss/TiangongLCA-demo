@@ -4,9 +4,13 @@
 
 - [ ] M1–M5 in `ROADMAP.md` green on a fresh clone; Pages URL works on a phone.
 - [ ] Codex CLI (or Claude Code) logged in on the instructor laptop; `node` ≥ 20 installed (for `node web/test.mjs`).
-- [ ] M4 web tool committed and live on Pages: it is the fallback for the live build and the tool for Track C.
+- [ ] M4 web tool committed and live on Pages: it is the fallback for the live build and the tool for Track C. Pages serves the
+      student edition (`prompts/03_student_edition.md`: names, no uuids, dataset cards). For uuids, resolution rules and data
+      warnings open a local copy with `?audit=1` (from disk or localhost); the public site ignores the parameter.
 - [ ] Printed or linked: `lecture/worksheet.md`, `prompts/student_prompt_cards.md`, the Pages URL and the classroom site URL as QR codes.
 - [ ] Classroom site: open `/facilitator.html`, sign in with the PIN, note the six-digit classroom code, and open the student page on a phone.
+      After any change under `classroom/`, publish the Site again: a git push updates Pages, not the Site (steps in `classroom/README.md`).
+      Check that the student form lists all 31 grids (China first) and refuses a value above 1,000 t as "looks like kg".
 - [ ] Two to three days before: push the repo (Track A clones it at home), then send the optional one-page note
       `lecture/before_class.md` to the host to forward: its text as the e-mail, the Word copy
       `local/handout/TiangongLCA_SNU_before_you_come.docx` attached (rebuild with `node build_handout.js` there).
@@ -27,7 +31,8 @@
 
 ## Live-build script (0:35–1:05)
 
-1. `git clone … && cd TiangongLCA-demo && codex` (or `claude`). Show `AGENTS.md` for 30 s: "this is the contract".
+1. `git clone … live-build && cd live-build && codex` (or `claude`), in a fresh folder: the build rewrites `web/`, and it must never be
+   pushed over the student edition on Pages. Show `AGENTS.md` for 30 s: "this is the contract".
 2. Paste `prompts/00_build_tool.md`. While it runs, explain what the test checks and why identities (column sums) matter.
 3. When it stops: `node web/test.mjs` → expect PASS. Open `web/index.html`. Change the SVE electricity provider to a hydro-heavy province
    (Qinghai, Yunnan, Sichuan) and watch SVE drop below Biopile; then set Biopile to the same province: SVE is higher again (ratio ≈ 1.4).

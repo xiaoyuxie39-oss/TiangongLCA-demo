@@ -79,9 +79,14 @@ $('join-form').addEventListener('submit', async event => {
   try { await joinSession(values.code, values.label, values.recovery_code); }
   catch { /* Error is shown beside the join button. */ }
 });
+const tonneFields = ['baseline_sve_t', 'baseline_biopile_t', 'changed_sve_t', 'changed_biopile_t'];
+// The calculator shows kg; every total in this exercise is well under 1,000 t (the server refuses more).
+const kgMessage = 'A value above 1,000 looks like kg CO₂-eq. This form takes tonnes: divide the calculator\'s number by 1,000 (92,849 kg = 92.8 t).';
+const looksLikeKg = values => tonneFields.some(key => Number(values[key]) > 1000);
 async function saveValues(values) {
   if (!activeCode || !token) throw new Error('Join a session first.');
-  for (const key of ['baseline_sve_t', 'baseline_biopile_t', 'changed_sve_t', 'changed_biopile_t']) values[key] = Number(values[key]);
+  for (const key of tonneFields) values[key] = Number(values[key]);
+  if (looksLikeKg(values)) throw new Error(kgMessage);
   const ratio = values.baseline_sve_t / values.baseline_biopile_t;
   if (!Number.isFinite(ratio)) throw new Error('Check the SVE and Biopile values.');
   $('save-button').disabled = true; setStatus('save-status', 'Saving…');
@@ -96,6 +101,11 @@ $('answer-form').addEventListener('submit', async event => {
   event.preventDefault();
   try { await saveValues(Object.fromEntries(new FormData(event.currentTarget))); }
   catch (error) { setStatus('save-status', error.message, true); }
+});
+$('answer-form').addEventListener('input', event => {
+  if (!tonneFields.includes(event.target.name)) return;
+  if (looksLikeKg(Object.fromEntries(new FormData($('answer-form'))))) setStatus('save-status', kgMessage, true);
+  else if ($('save-status').textContent === kgMessage) setStatus('save-status', '');
 });
 const modelContext = document.modelContext;
 if (modelContext?.registerTool) {

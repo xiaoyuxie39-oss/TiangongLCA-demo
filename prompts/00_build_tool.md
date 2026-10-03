@@ -37,6 +37,9 @@ A **single-page web tool** (`web/index.html` + `web/lca_core.js`, vanilla JavaSc
   netted on the diagonal, flows with `type: null` treated as unlinked.
 - Must open from `file://` (so use `fetch` with a fallback to an inlined `<script type="application/json">` copy of the bundle if `fetch` fails on `file://`).
 - Readable on a laptop and a phone. No login, no network calls other than the optional CDN.
+- Written for students: show names, amounts, units and each item's `label` and `why_short`. Do not print uuids, resolution-rule
+  codes or the long `why` notes on screen; keep them for an `?audit=1` view that only works on a local copy (see Acceptance
+  in `AGENTS.md`).
 
 ## Acceptance
 

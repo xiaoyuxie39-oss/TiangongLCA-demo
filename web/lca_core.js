@@ -410,6 +410,21 @@
     return { impacts, inventory, byProcess, byStage, byFlow };
   }
 
+  // Which columns emit one elementary flow, for one method: Q[k,i] B[i,j] s_j.
+  // Sums over j to byFlow[k][i].
+  function flowByProcess(system, scaling, method, row) {
+    const factor = system.Q[method][row];
+    return Float64Array.from(system.B[row], (amount, col) => factor * amount * scaling[col]);
+  }
+
+  // Impacts of one unit of a column's reference flow (e.g. 1 MJ of a grid mix),
+  // with its whole upstream: solve A s = e_j, then Q B s.
+  function unitImpacts(system, columnId) {
+    const demand = new Float64Array(system.cols.length);
+    demand[system.colIndex[columnId]] = 1;
+    return lcia(system, solve(system, demand)).impacts;
+  }
+
   function uncharacterisedFlows(system, inventory) {
     const result = [];
     system.elemKeys.forEach((key, row) => {
@@ -448,6 +463,8 @@
     contributions,
     gaussianSolve,
     geoScore,
+    flowByProcess,
+    unitImpacts,
     uncharacterisedFlows,
     foregroundMatrix,
   };

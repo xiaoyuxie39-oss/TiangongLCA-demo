@@ -41,7 +41,7 @@ Foreground data come from the paper's Tables 2–3; background data come from th
 | `data/` | Snapshot builder and the frozen TianGong snapshot (gzipped JSON) |
 | `reference/` | Python reference implementation used to validate results and generate `tests/expected_results.json` |
 | `prompts/` | The build prompt used live, follow-up prompts, stretch goals, and student prompt cards |
-| `web/` | The single-page tool generated during the workshop, plus `web/data/case_bundle.json` |
+| `web/` | The single-page tool generated during the workshop, in its student edition (names instead of uuids, dataset cards; `?audit=1` on a local copy for the instructor), plus `web/data/case_bundle.json` |
 | `tests/` | Expected results with tolerances; both the reference and the generated tool must reproduce them |
 | `classroom/` | Optional online classroom submission and live aggregate board (ChatGPT Sites deployment) |
 | `lecture/` | Runbook with timing and fallbacks, student worksheet, optional one-page note sent to students before the day |

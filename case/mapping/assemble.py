@@ -28,6 +28,29 @@ ADDONS = {
     }],
 }
 LIMIT_WHY, LIMIT_NOTES = 900, 1200
+# What the student view of web/ prints: a readable name and a one-sentence reason (no uuids, no verifier notes).
+STUDENT = {
+    "activated_carbon": ("Granular activated carbon (GAC)", "Coal-based, steam-activated carbon (China, 2019): the technology closest to the paper's GAC among TianGong's activated-carbon datasets."),
+    "ammonium_sulphate": ("Ammonium sulphate (nutrient)", "No TianGong dataset produces ammonium sulphate, so it is represented by its ammonia content (0.258 kg ammonia per kg)."),
+    "bentonite": ("Bentonite (well seal)", "No usable bentonite dataset in TianGong; represented by the closest clay-mining record (China, 2019)."),
+    "concrete": ("Concrete", "No usable concrete dataset; represented by its cement content (300 kg Portland cement per m³), which carries most of concrete's footprint."),
+    "diesel_machinery": ("Diesel (machinery)", "No diesel production dataset in TianGong, so diesel supply is cut off; the CO₂ from burning it on site is added directly (2.68 kg per litre)."),
+    "electricity": ("Electricity", "TianGong has no Korean grid; the China 2019 national mix is the neutral default, and 30 provincial mixes are available to test the choice."),
+    "gravel": ("Gravel", "Crushed sand-and-gravel aggregate (China, 2019): the dataset whose product matches construction gravel."),
+    "hdpe_sheet": ("HDPE liner (2 mm)", "Represented by HDPE granulate production (China, 2020), the most recent cradle-to-gate HDPE dataset; sheet making is not included."),
+    "microorganism": ("Microbial inoculum", "TianGong's only microorganism dataset is a laboratory batch that cannot be scaled to 4,777 L, so the inoculum is cut off on purpose."),
+    "mortar": ("Mortar (well grout)", "No mortar dataset; represented by its cement content (0.25 kg Portland cement per kg mortar)."),
+    "polyurethane_hose": ("Polyurethane hose", "No polyurethane dataset with real inputs; the hose is represented by mass as HDPE plastic (0.5 kg per metre, an engineering assumption)."),
+    "potassium_sulphate": ("Potassium sulphate (nutrient)", "Potassium sulphate from the Mannheim process (China, 2019), the main industrial route."),
+    "pp_textile": ("PP geotextile", "No geotextile dataset with producers; represented by the polypropylene it is made of (0.3 kg per m², an assumed grade)."),
+    "pvc": ("PVC well casing", "Peer-reviewed PVC production dataset (China, ethylene route, the route Korean PVC makers use); pipe extrusion is not included."),
+    "sand": ("Sand", "Same aggregate dataset as gravel: the dataset whose product matches construction sand."),
+    "thp_tube": ("THP aeration tube", "A perforated HDPE pipe, so represented by HDPE granulate production (China, 2020) at about 1 kg per metre."),
+    "transport_lorry": ("Road freight", "TianGong has no truck-transport dataset; road freight is approximated by the Chinese road-freight economic sector, at 0.0809 EUR per tonne-km."),
+    "water": ("Tap water", "Municipal tap water from a conventional treatment plant (China, 2019), the standard technology in Korea and China."),
+    "welding_gas": ("Gas welding", "No welding dataset; represented by the acetylene burned per metre of weld, with its combustion CO₂ added directly."),
+    "wire_mesh": ("Steel wire mesh", "No wire or mesh dataset; represented as generic steel (2.22 kg per m²) from the only complete cradle-to-gate steel inventory."),
+}
 
 
 def main():
@@ -56,6 +79,7 @@ def main():
         f = s.flows.get(flow) if flow else None
         p = s.by_uuid.get(prov) if prov else None
         entry = {
+            "label": STUDENT[item][0], "why_short": STUDENT[item][1],
             "flow": flow, "flow_name": (f or {}).get("name"), "flow_unit": (f or {}).get("unit"),
             "convert": {"from": m["convert"]["from"], "factor": factor, "note": m["convert"]["note"][:400], "source": m["convert"].get("source", "")[:300]},
             "default_provider": prov, "default_provider_name": (p or {}).get("name") or prov_name,

@@ -5,6 +5,10 @@ const nextPhases = { open: ['locked'], locked: ['open', 'revealed'], revealed: [
 const gacOptions = new Set(['missing-upstream', 'missing-factor', 'truly-zero', 'unsure']);
 const cutoffOptions = new Set(['diesel_machinery', 'microorganism', 'other', 'unsure']);
 const providerIds = new Set(catalog.providers.map(p => p.uuid));
+const providerNames = new Map(catalog.providers.map(p => [p.uuid, p.name.replace('Electricity production ; Electricity mix ; ', '')]));
+const providerName = uuid => providerNames.get(uuid) || '';
+// The largest legitimate total is about 142 t (SVE on the Inner Mongolia grid); above this a group has typed kg.
+const MAX_T = 1000;
 class InputError extends Error {}
 const now = () => new Date().toISOString();
 const json = (data, status = 200, headers = {}) => new Response(JSON.stringify(data), {
@@ -66,10 +70,11 @@ function checkOrigin(request) {
   const origin = request.headers.get('origin');
   return !origin || origin === new URL(request.url).origin;
 }
-function numeric(value) { return typeof value === 'number' && Number.isFinite(value) && value > 0 && value <= 100000; }
+function numeric(value) { return typeof value === 'number' && Number.isFinite(value) && value > 0; }
 export function validateResponse(value) {
   for (const key of ['baseline_sve_t', 'baseline_biopile_t', 'changed_sve_t', 'changed_biopile_t']) {
     if (!numeric(value[key])) throw new InputError(`${key} must be a positive value in t CO₂-eq.`);
+    if (value[key] > MAX_T) throw new InputError(`${key} = ${value[key]} looks like kg CO₂-eq: the form takes tonnes, so divide the calculator's number by 1,000.`);
   }
   if (!providerIds.has(value.provider_uuid)) throw new InputError('Choose an electricity provider from the list.');
   if (!gacOptions.has(value.gac_reason)) throw new InputError('Choose a GAC explanation.');
@@ -179,11 +184,13 @@ async function api(request, env, url) {
         return json(await progress(db, { ...item, phase: input.phase, updated_at: timestamp }));
       }
       if (path[4] === 'entries' && method === 'GET') {
-        return json(await all(db, 'SELECT g.label, r.* FROM responses r JOIN groups g ON g.id = r.group_id WHERE r.session_id = ? ORDER BY r.updated_at DESC', item.id));
+        const rows = await all(db, 'SELECT g.label, r.* FROM responses r JOIN groups g ON g.id = r.group_id WHERE r.session_id = ? ORDER BY r.updated_at DESC', item.id);
+        return json(rows.map(row => ({ ...row, provider_name: providerName(row.provider_uuid) })));
       }
       if (path[4] === 'export' && method === 'GET') {
-        const rows = await all(db, 'SELECT g.label, r.* FROM responses r JOIN groups g ON g.id = r.group_id WHERE r.session_id = ? ORDER BY g.label_key', item.id);
-        const columns = ['label', 'baseline_sve_t', 'baseline_biopile_t', 'provider_uuid', 'changed_sve_t', 'changed_biopile_t', 'gac_reason', 'cutoff_choice', 'explanation', 'snapshot', 'method_uuid', 'electricity_flow_uuid', 'revision', 'updated_at'];
+        const rows = (await all(db, 'SELECT g.label, r.* FROM responses r JOIN groups g ON g.id = r.group_id WHERE r.session_id = ? ORDER BY g.label_key', item.id))
+          .map(row => ({ ...row, provider_name: providerName(row.provider_uuid) }));
+        const columns = ['label', 'baseline_sve_t', 'baseline_biopile_t', 'provider_name', 'provider_uuid', 'changed_sve_t', 'changed_biopile_t', 'gac_reason', 'cutoff_choice', 'explanation', 'snapshot', 'method_uuid', 'electricity_flow_uuid', 'revision', 'updated_at'];
         const csv = [columns.join(','), ...rows.map(row => columns.map(key => csvCell(row[key])).join(','))].join('\r\n');
         return new Response(`\uFEFF${csv}`, { headers: { 'content-type': 'text/csv; charset=utf-8', 'content-disposition': `attachment; filename="classroom-${item.code}.csv"`, 'cache-control': 'no-store' } });
       }

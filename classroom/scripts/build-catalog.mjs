@@ -5,12 +5,14 @@ import { dirname, resolve } from 'node:path';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const bundle = JSON.parse(readFileSync(resolve(root, 'web/data/case_bundle.json'), 'utf8'));
 const choice = JSON.parse(readFileSync(resolve(root, 'case/provider_choices.json'), 'utf8')).electricity;
-const ids = [choice.default_provider, ...choice.alternatives];
+// Every grid the calculator's dropdown offers (bundle.producers), the default first, then by name.
+const ids = bundle.producers[choice.flow] || [];
+if (!ids.includes(choice.default_provider)) throw new Error(`Missing default electricity provider: ${choice.default_provider}`);
 const providers = ids.map(uuid => {
   const process = bundle.processes[uuid];
   if (!process || process.ref_flow !== choice.flow) throw new Error(`Missing electricity provider: ${uuid}`);
   return { uuid, name: process.name, geo: process.geo, year: process.year };
-});
+}).sort((a, b) => (b.uuid === choice.default_provider) - (a.uuid === choice.default_provider) || a.name.localeCompare(b.name));
 const method = bundle.methods.find(item => item.name === 'Climate change');
 const catalog = {
   snapshot: bundle.meta.snapshot,

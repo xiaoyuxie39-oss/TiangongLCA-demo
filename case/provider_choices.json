@@ -2,6 +2,8 @@
  "_comment": "One entry per foreground item. Assembled by case/mapping/assemble.py from the mapping workflow (2026-10-02); full reasoning in docs/05_provider_mapping_decisions.md. Add-ons are documented direct emissions per printed unit.",
  "_background_overrides": {},
  "activated_carbon": {
+  "label": "Granular activated carbon (GAC)",
+  "why_short": "Coal-based, steam-activated carbon (China, 2019): the technology closest to the paper's GAC among TianGong's activated-carbon datasets.",
   "flow": "5cad53b5-252a-4e2f-8197-8be465707405",
   "flow_name": "Activated carbon",
   "flow_unit": "kg",
@@ -24,6 +26,8 @@
   "data_quality_notes": "(1) All six NESPS2 producers are direct-emission coefficient datasets (第二次全国污染源普查产排污核算系数手册): zero product or energy inputs, only air/water pollutant outputs, so cradle-to-gate energy, CO2 and feedstock are entirely missing. (2) Each NESPS2 process carries repeated exchange rows for the same elementary flow: c090f0c3 has two rows each for PM, SO2, NOx and Exhaust gas; a83ed2c4 has three identical SO2 rows (0.47 kg) and five PM rows; 4b8ba0f1 has five PM rows summing to 253.7 kg/t. These look like several census coefficient rows (sub-technologies or control levels) loaded side by side; the matrix sums them, so c090f0c3's emissions are probably ~2x a single-technology value. (3) Every NESPS2 producer also emits a non-reference product output 'Exhaust gas' (14d56ab9, m3, ~114,000 m3/t for c090f0c3) and the biomass/flushing ones a 'Waste water' flow 72721c4e that has no type or unit in the snapshot; per the matrix conventions these are ignored for A and show up as unlinked outputs, harmless but noisy. (4) The coal route is four fragments with identical ref output (1000 kg AC); linking one loses the others, but the loss is negligible as quantified above. (5) 8e839591 (NO 2011): ref outpu …"
  },
  "ammonium_sulphate": {
+  "label": "Ammonium sulphate (nutrient)",
+  "why_short": "No TianGong dataset produces ammonium sulphate, so it is represented by its ammonia content (0.258 kg ammonia per kg).",
   "flow": "9874382d-672c-4601-a3ce-9a4ae21e663b",
   "flow_name": "Ammonia",
   "flow_unit": "kg",
@@ -42,6 +46,8 @@
   "data_quality_notes": "(a) Hint flow's only producer 65dfa04a has its reference flag on an input exchange (7 kg ammonium sulfate in, electricity in, nothing out): a database error, not a provider. (b) In the curators' KR process the flow name appears duplicated as 'Ammonium sulfate,Ammonium sulfate'. (c) NESPS2 'Synthetic ammonia' reference flow 82980072 and the 'Ammonia Nitrogen' flow adace266 are absent from flows.json (unit None). (d) Hydrogen producers 615f558a (SMR) and 9d85fcde (electrolysis), both from Chen et al. 2022, show inputs roughly 10-100x below physical requirements (SMR: 0.6 MJ NG per kg H2 vs ~165 MJ expected; electrolysis: 5 kWh per kg H2 vs ~50 expected), so the ammonia proxy's upstream burden is understated. (e) The ammonia process 9c8dd7aa has year=None, is a black box with no direct elementary flows, and its 822.5 kg N2 input ('nitrogen' 4f19ca0f, 60 consumers, 0 producers) is an internal cut-off (air separation, minor). (f) Noticed in passing, outside this item: the KR process lists Microorganism as 4.777 kg whereas the paper prints 4,777 L."
  },
  "bentonite": {
+  "label": "Bentonite (well seal)",
+  "why_short": "No usable bentonite dataset in TianGong; represented by the closest clay-mining record (China, 2019).",
   "flow": "fcf4d467-85fd-4a94-af49-4c2e62684d9a",
   "flow_name": "Clay",
   "flow_unit": "kg",
@@ -60,6 +66,8 @@
   "data_quality_notes": "(a) Hint flow is Elementary (ELCD uuid family 08a91e70-3ddc-11dd-...), with 23 consumers across TianGong (KR-2011 well, UM 2009 S/S, casting, shale-gas drilling): curators consistently treat bentonite as a resource input, never as a product with a producer. (b) 88ee466e-ac29-4bc5-91d5-25134a21774f lists bentonite as its REF *input* (dir=in, ref=true) with only VOC outputs: a snapshot data error that makes it appear as a 'producer'. (c) No CF for PM2.5-PM10 (08a91e70-3ddc-11dd-9501-0050c2490048), for the bentonite resource flow, or for 'Clay, bentonite, in ground' (93806a54) in any of the 25 methods, so all NESPS2 mining datasets score zero. (d) NESPS2 flow names are machine-mistranslated: hard clay ore = 'Lech-Lecha, Lekh-Lekha, or Lech-L'cha' (049daa8c), kaolin ore = 'Ex-Cha Kwo Ling Kaolin Mine' (b0cb49a6). (e) 'Na-activated bentonite granular' (93a57714) is the only true bentonite product flow but has 0 producers and 0 consumers. (f) CEEIO sector 555f4abf has unit EUR with prop 'Market value US 2000, bulk prices' and consumes 1.25e9 EUR of its own reference flow (intra-sector IO loop), so the checker would flag it. (g) Seen in the KR-2011 well process dcf5877b while verifying: d …"
  },
  "concrete": {
+  "label": "Concrete",
+  "why_short": "No usable concrete dataset; represented by its cement content (300 kg Portland cement per m³), which carries most of concrete's footprint.",
   "flow": "4f19f123-7b3b-11dd-ad8b-0800200c9a66",
   "flow_name": " Cement, common portland cement  ",
   "flow_unit": "kg",
@@ -84,6 +92,8 @@
   "data_quality_notes": "(1) The paper's own TianGong processes (521537b7 foundation, d58c1c06 assembly) entered the printed numbers with unit kg and no conversion: 19 kg 'cement, unspecified' for 19 m3 concrete and 5 kg 'Concrete' for 5 m3; gravel 9.6 kg, sand 4 kg likewise. The hint flows are therefore right in kind but the amounts are junk. (2) 'Concrete' producer de2a31fe: ref output 43,000 kg with 9.93e6 kg CO2 and 5.94e7 MJ energy, i.e. 231 kg CO2 per kg; the consuming foundation datasets from the same studies use 300 and 1,475.5 'kg' per turbine foundation, so the whole Yang 2018 / Li 2020 family is in tonnes labelled kg. Also inputs are a single 'Energy, geothermal, converted' elementary flow and 23,200 kg 'nitrous oxide' (almost certainly NOx). (3) 'Concrete' producer 7f9635ec (YL-GX-CN 2012) is a cement production stub: no inputs, 1280 kg CO2 and 2.81 kg 'nitrous oxide' (likely NOx; N2O would add ~770 kg CO2e/t) per 1000 kg. (4) 'cement, unspecified' producer aaf128a2 (NMG-CN 2017) reports 604 kg CO2 per 1 kg cement (ref amount should be 1 t); a72b9bbe is a laboratory phosphogypsum eco-cement that consumes OPC 32.5; 47ce24a4 is US 2013 with limestone, gypsum, coal, fuel oil, iron ore all producer …"
  },
  "diesel_machinery": {
+  "label": "Diesel (machinery)",
+  "why_short": "No diesel production dataset in TianGong, so diesel supply is cut off; the CO₂ from burning it on site is added directly (2.68 kg per litre).",
   "flow": null,
   "flow_name": null,
   "flow_unit": null,
@@ -114,6 +124,8 @@
   ]
  },
  "electricity": {
+  "label": "Electricity",
+  "why_short": "TianGong has no Korean grid; the China 2019 national mix is the neutral default, and 30 provincial mixes are available to test the choice.",
   "flow": "890a70b7-b677-4e2a-8a1b-7d017e0a10ae",
   "flow_name": "Electricity",
   "flow_unit": "MJ",
@@ -138,6 +150,8 @@
   "data_quality_notes": "(1) Three of the 34 'producers' of flow Electricity are mis-tagged fragments from a biomass-jet-fuel thesis (0092e030, 15df6697, 42b76a15): their reference exchange is an INPUT of Electricity (they consume their own reference flow), year is None, and they must never be used as providers; the repo resolver would skip them anyway (year None loses to 2019) but they pollute `producers` listings. (2) Every 'Electricity mix' process has inputs summing to exactly 3.6 MJ per 3.6 MJ output: no transmission and distribution losses (~5-6 % in both China and Korea) and no plant own-use are modelled, so delivered electricity is slightly under-burdened. (3) In the mix, the hydro, nuclear, wind and solar inputs have zero producers and become cut-offs; their direct emissions are near zero so the omission mainly drops infrastructure burdens, but the tool will list ~30 % of the national mix (and up to 88 % for Sichuan/Yunnan/Qinghai) as unlinked MJ. (4) 'Thermal power ; China' is explicitly direct-combustion only ('does not consider upstream raw material extraction'); its dominant inputs raw coal (0.394 kg/kWh) and washed coal have no producers, so coal mining and transport (methane, mining energy)  …"
  },
  "gravel": {
+  "label": "Gravel",
+  "why_short": "Crushed sand-and-gravel aggregate (China, 2019): the dataset whose product matches construction gravel.",
   "flow": "b1d304a4-a490-4837-a66c-d3d07015556b",
   "flow_name": "Sandstone",
   "flow_unit": "kg",
@@ -158,6 +172,8 @@
   "data_quality_notes": "(1) The curated KR 2011 processes carry the paper's printed numbers without unit conversion: 521537b7 'Barrier layer ; SVE foundation' consumes 9.6 kg 'Gravel Sand' (paper: 9.6 m3; likewise 19 kg cement for 19 m3 concrete, 96 kg wire mesh for 96 m2, 0.021 kg diesel for 21 L) and 77a72943 'Biopile ; Hardened impermeable ground' consumes 7.8 kg elementary gravel (paper: 7.8 m3) and 60 kg sand (paper: 60 m3). The hints' amounts must not be reused as-is. (2) Provider db2d45b0 lists the same elementary flow several times with different NESPS2 end-of-pipe coefficients (PM2.5-10: 1.89 / 0.378 / 0.189 / 0.0189 kg per 1000 kg; COD: 0.0114 / 0.00912 / 0.00798 kg; petroleum-related waste 3 lines) - these are alternative treatment levels, but a matrix build will SUM them (PM total 2.48 kg/t instead of 1.89 untreated or 0.0189 well-controlled), overstating dust by ~30% vs the untreated case. (3) Its non-reference outputs are ignored per the matrix conventions: 'Exhaust gas' 1215 m3 (product flow), 'Petroleum-related waste' (0 producers) and 'Waste water' 2160 (flow 72721c4e has no name/type/unit in flows.json - broken flow reference). (4) The process has no product inputs and no electricity, so …"
  },
  "hdpe_sheet": {
+  "label": "HDPE liner (2 mm)",
+  "why_short": "Represented by HDPE granulate production (China, 2020), the most recent cradle-to-gate HDPE dataset; sheet making is not included.",
   "flow": "4f19f115-7b3b-11dd-ad8b-0800200c9a66",
   "flow_name": "polyethylene high density granulate (PE-HD)",
   "flow_unit": "kg",
@@ -178,6 +194,8 @@
   "data_quality_notes": "Default d8dddfbb: 'ethylene' input (1.02 kg) is mapped to an air-emission elementary flow (fe0acd60-...-9ee0, 'Emissions to urban air') used in the input direction, so it carries no resource burden and no characterisation factor; naphtha 0.075 kg (4f19ca0d) has zero producers -> cut-off; hydrogen 0.11 kg/kg HDPE is ~100x a realistic chain-transfer dose and, by the resolution rule (geo CN, year 2022, first uuid), resolves to Steam methane reforming 615f558a, which could add on the order of 1 kg CO2e/kg on top of the embedded 2.35 kg CO2 (possible double counting; consider zeroing or checking this input in a sensitivity run); carbon monoxide 1.76 kg/kg and NOx 0.32 kg/kg are implausibly high (likely g entered as kg) and will inflate photochemical ozone / acidification scores; 'Suspended substances' 0.33 kg is a product-flow output with no producer (unlinked output); 'Waste (unspecified)' 1.27 kg is ignored. Alternative 5f2f416a: single input is 17.6 TJ 'Energy, geothermal, converted' (mislabelled elementary flow), 1,170 kg nitrous oxide for 257 t PE (4.55 g/kg, adds 1.24 kg CO2e/kg; almost certainly NOx mislabelled), classified under 'Renewable fuels', and specific to cable-insulatio …"
  },
  "microorganism": {
+  "label": "Microbial inoculum",
+  "why_short": "TianGong's only microorganism dataset is a laboratory batch that cannot be scaled to 4,777 L, so the inoculum is cut off on purpose.",
   "flow": null,
   "flow_name": null,
   "flow_unit": null,
@@ -197,6 +215,8 @@
   "cutoff": true
  },
  "mortar": {
+  "label": "Mortar (well grout)",
+  "why_short": "No mortar dataset; represented by its cement content (0.25 kg Portland cement per kg mortar).",
   "flow": "4f19f123-7b3b-11dd-ad8b-0800200c9a66",
   "flow_name": " Cement, common portland cement  ",
   "flow_unit": "kg",
@@ -220,6 +240,8 @@
   "data_quality_notes": "Hint flow Mortar (6c154622) has 0 producers but 11 consumers across TianGong (remediation and substation datasets) - a dangling flow. TianGong's own digitisation of this paper (dcf5877b, KR 2011) also mis-units two other lines: sand 0.3 kg (paper: 0.3 m3) and diesel 0.011 kg (paper: 11 L), and adds an unexplained 25,000 kg 'Equipment and Materials Arriving on Site' input. 'Cement, unspecified' (ec23da1b) is unusable despite its name: aaf128a2 (NMG-CN 2017 wind-farm fragment) emits 604 kg CO2 and 1.92 kg N2O per 1 kg cement (per-tonne values on a 1 kg reference, 1000x error) and has only a geothermal-energy input; 47ce24a4 (US 2013) has no CO2 output and all fuels/limestone unlinked; a72b9bbe is lab-scale phosphogypsum eco-cement; 51baa5db is a kiln co-processing grinding fragment. Default provider 1129701c lists duplicate exchange rows (two Electricity inputs 187.3 + 153.4 MJ, two hard-coal inputs 126.5 + 3.5 MJ) - the matrix builder must sum duplicates, not overwrite. 'Limestone, crushed, for mill' (c431c0c3, 141 consumers) and 'gypsum stone' (4f19a2fe) have no producers anywhere, so every cement dataset carries them as cut-offs; a differently-named 'Limestone' flow (6cf9f186) has …"
  },
  "polyurethane_hose": {
+  "label": "Polyurethane hose",
+  "why_short": "No polyurethane dataset with real inputs; the hose is represented by mass as HDPE plastic (0.5 kg per metre, an engineering assumption).",
   "flow": "4f19f115-7b3b-11dd-ad8b-0800200c9a66",
   "flow_name": "polyethylene high density granulate (PE-HD)",
   "flow_unit": "kg",
@@ -240,6 +262,8 @@
   "data_quality_notes": "Hint flow 0d947db3 has 0 producers; the KR process d58c1c06 enters it as 340 kg, i.e. the curators mapped 340 m to 340 kg 1:1 (unit mismatch). NESPS2 census datasets (7bd61ed6 plastic tube extrusion, 060c8aec polyether polyol, 60670a4c PU foam, 394548b3 PVC) have only elementary outputs per 1000 kg product, no product/energy inputs, and repeat the same elementary flow in several rows (different technology/abatement variants), so summing rows overcounts; 7bd61ed6 also emits 70000 m3 'Exhaust gas' as an unlinked product output. Chosen provider d8dddfbb: ethylene (1.02 kg) is modelled as an elementary-flow input (no upstream), naphtha 0.075 kg unlinked, hydrogen 0.11 kg has 6 producers; CO 1.76 kg/kg and NOx 0.32 kg/kg look mis-scaled (plausibly g/kg), which may inflate POCP/acidification; 1.27 kg 'Waste (unspecified)' and 0.33 kg 'Suspended substances' per kg are unlinked outputs. Other PE-HD producer 5f2f416a is a site-specific wind-farm record (17.6e6 MJ geothermal energy in, 645 t CO2 per 257 t PE = 2.5 kg/kg) and is not a generic process. Other PE options rejected: LDPE 2020 (218eaad4) has no CO2 output at all; PE 2009 (e3973c12) reports only 91 kg CO2/t with 32.3 GJ 'energy (rec …"
  },
  "potassium_sulphate": {
+  "label": "Potassium sulphate (nutrient)",
+  "why_short": "Potassium sulphate from the Mannheim process (China, 2019), the main industrial route.",
   "flow": "36ca5958-0bce-4e08-9243-a9291adb2b3c",
   "flow_name": "Potassium sulfate",
   "flow_unit": "kg",
@@ -261,6 +285,8 @@
   "data_quality_notes": "(1) All six K2SO4 producers (both flows) are NESPS2 'Reference Parameters' unit processes with zero inputs; the only exchanges are reference output 1000 kg plus 1-3 air emissions, so no upstream linking is possible and no CO2 is present. (2) Each NESPS2 dataset is one plant section (crushing, furnace fuelled by natural gas / heavy oil / coal), so a single provider column represents one section, not the whole plant; a full-plant estimate would sum crushing + one furnace variant. (3) 'Exhaust gas' (m3) and 'Flue dust' (kg) are modelled as non-reference Product-flow outputs; under the matrix conventions they are ignored and will show up as 'unlinked outputs'. (4) The elementary flow 'sulfur dioxide' (fe0acd60) reports producers=1 in the snapshot, an indexing oddity to be ignored. (5) Hint flow name 'Potassium in potassium sulfate' vs Chinese dataset name '硫酸钾/硫酸钾镁肥 ; 混盐转化法': the K-basis implied by the English name is not confirmed by the Chinese name; the curator KR process 38ea5d3c consumed 558 kg of it unconverted. (6) 'Potassium fertilizer' (dd008d87, 16 consumers), 'Potash' (fb7d7490) and 'Potassium chloride' flows have zero producers; the compound-fertilizer NESPS2 processes that …"
  },
  "pp_textile": {
+  "label": "PP geotextile",
+  "why_short": "No geotextile dataset with producers; represented by the polypropylene it is made of (0.3 kg per m², an assumed grade).",
   "flow": "4f19f11d-7b3b-11dd-ad8b-0800200c9a66",
   "flow_name": "polypropylene granulate (PP)",
   "flow_unit": "kg",
@@ -282,6 +308,8 @@
   "data_quality_notes": "Hint flow 4f19f11c 'polypropylene fibres (PP)' has 0 producers and 4 dangling consumers. TianGong's KR-2011 process 77a72943 lists 600 kg of that flow for the paper's 600 m2 (unit copied, not converted; also diesel 0.016 kg for 16 L and PE 1.2 kg for 600 m2 of 2 mm HDPE - the whole process is unit-confused). Default 90cdb77a: inputs per kg PP are 1.05 kg propylene plus 1.64 kg naphtha, so the mass balance does not close (naphtha presumably aggregates fuel + feedstock of the upstream refinery/cracker step); naphtha (4f19ca0d) and process water have no producers (cut-offs); 5.53 kg 'Waste (unspecified)' per kg PP is oddly large; nitrogen 0.037 kg and VOC 0.00277 kg appear as product-flow outputs with no producer (unlinked outputs). Coal-to-PP alternatives: 2005 data, hard coal entered both as elementary (MJ) and product (kg) input, 21,400/19,300 m3 water per tonne, unallocated co-products (31d0631d: 274 kg gasoline + 131 MJ LPG per t PP; b8bcc804: 626 kg PE-LLD per t PP), so they overstate PP burdens. NESPS2 candidates (Non-woven fabric 6b35ed69 producers 61d73146/935f27e8; PP filament 26f0ce1c producer d620aae0; PP 54802cfb producers 8a27ab7b/91a5462f; Short Fiber 5fd08d66 producer  …"
  },
  "pvc": {
+  "label": "PVC well casing",
+  "why_short": "Peer-reviewed PVC production dataset (China, ethylene route, the route Korean PVC makers use); pipe extrusion is not included.",
   "flow": "e9ba8900-4c21-4a2f-89c7-018cf30a01ea",
   "flow_name": "Polyvinyl Chloride",
   "flow_unit": "kg",
@@ -302,6 +330,8 @@
   "data_quality_notes": "Hint flow 50dd353a: both producers are NESPS2 emission-coefficient stubs with zero inputs (header comment is machine-translated census text); consumers=17 but it is effectively unmodelled upstream. Chosen provider 24fca75a: reference amount is 1000 kg (raw amount in A[i,i]); water input 5840 m3 per tonne is implausible (likely kg mis-unit, ~5.8 t/t), harmless because it is an elementary resource flow; chlorine (4f197be9), sodium hydroxide (4f1a1830), process steam (d71fef59), Water desalinated (c707e768), Catalyst and Calcium Oxide inputs all have 0 producers -> cut-offs to be listed; non-reference outputs 'Vinyl Chloride Monomer' (product flow, 6e-6 kg) and 'waste water - untreated' 1460 kg are unlinked outputs; no CO2 elementary output. Ethylene provider resolution: no YN-CN ethylene producer, so the fallback rule picks the most recent year -- three 2021 candidates tie (35691b8b ethane LZ-GS-CN, 85789c99 naphtha DL-LN-CN, e944f5c2 coal-MTO EEDS-NMG-CN) and the rule then takes the first by uuid (35691b8b, ethane route); the naphtha route 85789c99 is the physically right one for Korean/Chinese PVC-grade ethylene, so record or pin that choice if the bundle builder allows it; year=No …"
  },
  "sand": {
+  "label": "Sand",
+  "why_short": "Same aggregate dataset as gravel: the dataset whose product matches construction sand.",
   "flow": "b1d304a4-a490-4837-a66c-d3d07015556b",
   "flow_name": "Sandstone",
   "flow_unit": "kg",
@@ -322,6 +352,8 @@
   "data_quality_notes": "(a) TianGong's own digitisation of this paper (Extraction well dcf5877b, SVE system assembly d58c1c06, Biopile construction preparation 77a72943) entered the printed m3 values 0.3, 4 and 60 as **kg** of the elementary flow 'sand' - a 1,600x unit error - and models sand as a resource extraction, not a produced product (the d58c1c06 comment even reads 'Sand 4 m3'). (b) Hint flow #1 'Gravel Sand' 73f1241c: 0 producers, 7 consumers - useless. (c) Hint flow #2 'sand' 172a3daa is an Elementary flow (Resources from ground) with 4 producers, all 2020 EIA-based machine-made-sand plants (HAIN-CN dry line, CS-HUN-CN wet line); build_case_bundle.py check() rejects non-product flows and main() refuses to build, so it cannot be chosen. Of its producers, 4d048164 (bag dedusting: 41,870 kg sand in -> 38,870 kg sand out) and eda3eb34 (washing: 133,333 kg sand in -> 133,333 kg sand out, plus 85 m3 freshwater) consume their own reference flow (chain fragments); 73d358eb and f955e2e9 consume elementary 'gravel' (fe0acd60, itself the elementary ref flow of 6 crushing/screening processes) so the chain would not link upstream. 73d358eb mass balance is off: 41,870 kg gravel in vs 41,870 kg sand + 3,000 kg …"
  },
  "thp_tube": {
+  "label": "THP aeration tube",
+  "why_short": "A perforated HDPE pipe, so represented by HDPE granulate production (China, 2020) at about 1 kg per metre.",
   "flow": "4f19f115-7b3b-11dd-ad8b-0800200c9a66",
   "flow_name": "polyethylene high density granulate (PE-HD)",
   "flow_unit": "kg",
@@ -342,6 +374,8 @@
   "data_quality_notes": "d8dddfbb: carbon monoxide 1.76 kg/kg and NOx 0.32 kg/kg PE-HD are implausibly high (likely g mis-keyed as kg) - they do not affect GWP but will dominate any CO/NOx-based category; ethylene 1.02 kg/kg is entered as an elementary flow (resource) with 0 producers, which is how the black box avoids a cut-off; 'Suspended substances' 0.33 kg appears as a product output and is ignored by the matrix. 5f2f416a: single input 'Energy, geothermal, converted' 17.6 TJ for 257 t PE, geo SH-CN, classified under renewable fuels - not a real production dataset. 218eaad4 (LDPE 2020): no CO2 output at all, GWP would come from 3 MJ electricity only. e3973c12: 'energy (recovered)' 32,300 MJ/t and naphtha 1,392.77 kg/t with 0 producers; direct CO2 only 91 kg/t. 98341af9: 'Energy,unspecified' 32,546 MJ/t unlinked, 1995, CO2 6.4 kg/kg includes landfill. NESPS2 polyethylene records 91e8fc35/64915ee0 have their reference flow mislabelled 'Agricultural film' and carry only PM/VOC/COD coefficients. 'Plastic pipes' (554160db) and 'Nonel tube' (02fcb4b6, unit m) have zero producers. Hint amount 1.2 for the KR process is in an unstated unit (kg per the flow record, but physically must be t) and is shared with hdp …"
  },
  "transport_lorry": {
+  "label": "Road freight",
+  "why_short": "TianGong has no truck-transport dataset; road freight is approximated by the Chinese road-freight economic sector, at 0.0809 EUR per tonne-km.",
   "flow": "8d93fc15-8d0b-49fa-a0fc-9cccc7416f07",
   "flow_name": "Highway transport for cargo and auxiliary activities Sectors - CN",
   "flow_unit": "EUR",
@@ -360,6 +394,8 @@
   "data_quality_notes": "(a) Hint flow 4f1a3f30 'transport in t*km' is consumed by 152 processes and produced by none; the four t*km flows in the database all have zero producers. (b) KR-2011 process 67ed2674 (the curators' digitisation of this exact paper) has one input (2,994 t*km, unproduced) and outputs 99,800 'kg' of the service flow 'Equipment and Materials Arriving on Site' (e8bba15b, 16 producers all of the same shape, geo KR/CN/US/IT/NO); linking to any of them silently yields zero impact. (c) Diesel: flows 55a4c166 (170 consumers) and 9d258d75 (73 consumers) have no producers; the three 'producers' of 1cda7c03 (NESPS2 grain dryer, paint furnace, chamber furnace, CN 2019) have diesel as reference INPUT, report only NOx/PM (SO2 = 0, no CO2) and no upstream, and lca_matrix.py sets the diagonal only for reference outputs, so these columns would raise 'columns without reference output'. The sibling item diesel_machinery faces the same gap. (d) Straw-truck processes (842316da, fb0cca53, baa8427e, a49991e2; CN 2010-2020) have truck emissions but reference flows 'Crop straw'/'Wheat straw' and unlinked diesel inputs; fb0cca53 gives 3.24 kg CO2 per kg diesel, consistent with the 2.68 kg/L rule. (e) CEEIO m …"
  },
  "water": {
+  "label": "Tap water",
+  "why_short": "Municipal tap water from a conventional treatment plant (China, 2019), the standard technology in Korea and China.",
   "flow": "e5fef5ef-cb14-4e50-b037-cbf93e30b87c",
   "flow_name": "Tap Water",
   "flow_unit": "kg",
@@ -383,6 +419,8 @@
   "data_quality_notes": "(1) Two 'tap water' product flows exist: e5fef5ef 'Tap Water' (8 producers, 53 consumers, category Materials production/Water) and 3a8411b6 ' Tap water ' (0 producers, 99 consumers, miscategorised as 'Other mineralic materials') - the second is a dead end that will show up as a cut-off in any chain that uses it. (2) All 8 Tap Water producers are NESPS2 (2nd National Pollution Source Census) coefficient datasets: unit 'process' = 1000 kg output, zero inputs, only water-pollutant outputs; they are not gate-to-gate inventories. (3) Several of them repeat pollutants (6b77b560: COD 0.00112/0.000672/0.000672, total-P 2.34e-5/2.34e-6/1.17e-6, waste water 43.6/42.728/3.488; d9efb042 and b52e3e0d similar) - these are generation vs discharge coefficients for different treatment options and must not be summed; the chosen b5ae5f33 has one line per pollutant. (4) The 'Waste water' (72721c4e) and 'Ammonia Nitrogen' (adace266) outputs have no flow type and no unit in the snapshot (shown as [None]); 'Waste water' has one spurious 'producer' (an unrelated fur-tanning NESPS2 process b4910424), so these lines will be reported as unlinked outputs and NH3-N is not characterised. (5) 'Fresh Water' flow  …"
  },
  "welding_gas": {
+  "label": "Gas welding",
+  "why_short": "No welding dataset; represented by the acetylene burned per metre of weld, with its combustion CO₂ added directly.",
   "flow": "0ee52d35-6fea-4c7a-8922-fe2164a5d84b",
   "flow_name": "ethyne; acetylene",
   "flow_unit": "kg",
@@ -412,6 +450,8 @@
   ]
  },
  "wire_mesh": {
+  "label": "Steel wire mesh",
+  "why_short": "No wire or mesh dataset; represented as generic steel (2.22 kg per m²) from the only complete cradle-to-gate steel inventory.",
   "flow": "3bd51612-2a98-461f-8cf1-25098dd17835",
   "flow_name": "Steel",
   "flow_unit": "kg",

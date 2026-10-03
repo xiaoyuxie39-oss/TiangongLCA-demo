@@ -84,3 +84,9 @@ activated carbon, not electricity, dominates the climate score. The real system 
 1. Print A for the foreground only (6 stages + their direct providers). It fits on a slide.
 2. Print the size of the full reachable A (a few hundred columns) and the sparsity. That is the "background".
 3. Print `provider_log` and the cut-off list. Those are the modelling decisions an LCA practitioner is responsible for.
+   Print them readably: dataset names, amounts and a one-line reason (`label`, `why_short`), not uuids or rule codes.
+   The uuids stay traceable in the audit view of a local copy (`web/index.html?audit=1` opened from `file://` or
+   localhost); the public site never shows them.
+4. Let students open any dataset: what it consumes (and from which provider, or cut off), what it emits, and the impact of
+   one unit of its product with everything upstream (solve A s = e_j, then Q B s). A linked dataset with no inputs at all,
+   like the activated-carbon record, never shows up in the cut-off list; it only becomes visible here.

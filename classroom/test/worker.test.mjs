@@ -89,10 +89,25 @@ test('student submission, teacher reveal, recovery and aggregate privacy', async
   const exportFile = await call(e, `/api/admin/sessions/${code}/export`, 'GET', undefined, cookie);
   assert.match(exportFile.value, /'=Test group/);
   assert.match(exportFile.value, /Check upstream inputs/);
+  const province = catalog.providers[1].name.replace('Electricity production ; Electricity mix ; ', '');
+  assert.match(exportFile.value, /^﻿?label,baseline_sve_t,baseline_biopile_t,provider_name,provider_uuid,/);
+  assert.match(exportFile.value, new RegExp(`"${province}","${catalog.providers[1].uuid}"`));
+  const entries = await call(e, `/api/admin/sessions/${code}/entries`, 'GET', undefined, cookie);
+  assert.equal(entries.value[0].provider_name, province);
+});
+
+test('the electricity list offers every grid the calculator offers, national mix first', () => {
+  assert.equal(catalog.providers.length, 31);
+  assert.match(catalog.providers[0].name, /; China$/);
+  for (const province of ['Qinghai', 'Yunnan', 'Hainan', 'Inner Mongolia']) {
+    assert.ok(catalog.providers.some(provider => provider.name.endsWith(province)), province);
+  }
 });
 
 test('server validation and aggregation keep paired ratios', () => {
   assert.throws(() => validateResponse({ ...answer, baseline_biopile_t: 0 }), /baseline_biopile_t/);
+  assert.throws(() => validateResponse({ ...answer, baseline_sve_t: 92849 }), /looks like kg/);
+  assert.equal(validateResponse({ ...answer, changed_sve_t: 141.9 }).changed_sve_t, 141.9);
   const rows = [
     { ...answer, baseline_sve_t: 10, baseline_biopile_t: 2, changed_sve_t: 8 },
     { ...answer, baseline_sve_t: 20, baseline_biopile_t: 10, changed_sve_t: 18 },
